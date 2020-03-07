@@ -5,5 +5,11 @@
     <string name="stock">stock</string>
     <string name="recents">recents</string>
     <string name="settings">settings</string>
+    <string name="stockTitle">Stock</string>
+    <string name="add_ingredient">Add Ingredient</string>
+    <string name="name_of_ingredient">Name of Ingredient</string>
+    <string name="quantity">Quantity</string>
+    <string name="in_your_stock">In Your Stock</string>
+    <string name="outputstock">outputStock</string>
 
 </resources>
