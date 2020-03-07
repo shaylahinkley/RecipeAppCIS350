@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CIS350RecipeApp</string>
+    <string name="home">Home</string>
+    <string name="favorites">favorites</string>
+    <string name="stock">stock</string>
+    <string name="recents">recents</string>
+    <string name="settings">settings</string>
+
+</resources>
