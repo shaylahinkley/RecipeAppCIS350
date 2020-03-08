@@ -189,7 +189,10 @@ public class Inventory {
         }
         return temp.get(getLargest(similarities));
     }
-
+    /***
+     * Saves the current list of ingredients from the fridge Arraylist to a txt file
+     * @param name - name of txt file
+     */
     public void saveFridge(String name)
     {
         try
@@ -208,7 +211,10 @@ public class Inventory {
             System.out.printf("Error: %s\n", ex);
         }
     }
-
+    /**
+     * Loads in the previously saved list of ingredients from a file and adds them to the fridge Arraylist
+     * @param file - name of file that is read in 
+     */
     public void loadFridge(String file)
     {
         try
