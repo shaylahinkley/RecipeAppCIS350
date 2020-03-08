@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.constraintlayout.solver.widgets.Helper;
 
 
 /**
@@ -19,6 +20,8 @@ import android.os.Bundle;
 public class SettingsPg extends AppCompatActivity {
 
     private EditText editTextName;
+//    private HelperVariables helper = new HelperVariables();
+    private String name;
 
 
 
@@ -33,12 +36,19 @@ public class SettingsPg extends AppCompatActivity {
 
         configureSettingsBackHomeBtn();
 
+//        final HelperVariables helper = new HelperVariables();
         Button saveSettingsBtn = (Button) findViewById(R.id.saveSettingsBtn);
         final EditText nameText = (EditText) findViewById(R.id.editTextName);
+//        nameText.setText(helper.getName());
+        nameText.setText(this.name);
         saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                helper.setName(nameText.getText().toString());
+                    name = nameText.getText().toString();
+                    nameText.setText(nameText.getText().toString());
+////                nameText.setText(nameText.getText().toString());
+//                nameText.setText(helper.getName());
             }
         });
 //        editTextName = (EditText) findViewById(R.id.editTextName);
@@ -53,6 +63,14 @@ public class SettingsPg extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     /**
