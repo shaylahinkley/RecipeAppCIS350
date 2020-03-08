@@ -11,5 +11,9 @@
     <string name="quantity">Quantity</string>
     <string name="in_your_stock">In Your Stock</string>
     <string name="outputstock">outputStock</string>
+    <string name="add">ADD</string>
+    <string name="settings1">Settings</string>
+    <string name="name">Name:</string>
+    <string name="john_jane_doe">John/Jane Doe</string>
 
 </resources>

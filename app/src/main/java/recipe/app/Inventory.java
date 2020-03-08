@@ -45,7 +45,7 @@ public class Inventory {
      */
     public Inventory() {
         myCookbook = new Cookbook();
-        fillCookbook(new File("C:\\Users\\cvane\\IdeaProjects\\app\\src\\app\\recipes"));
+        fillCookbook(new File("C:\\Users\\shayl\\IdeaProjects\\CIS350RecipeApp\\app\\src\\RecipeTestFiles"));
         fridge = new ArrayList<>();
         setNumIngredients(0);
     }

@@ -12,6 +12,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/settingsBackHomeBtn" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+    />
+    <TextView
+            android:text="@string/settings1"
+            android:layout_width="115dp"
+            android:layout_height="41dp"
+            android:id="@+id/settingsTitleTextView" android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="148dp"
+            android:layout_marginStart="148dp"/>
+    <TextView
+            android:text="@string/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameTextView"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="98dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp" android:textSize="18sp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/john_jane_doe"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:textSize="12sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="98dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="88dp"
+            android:layout_marginStart="88dp" android:importantForAutofill="no"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
