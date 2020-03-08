@@ -6,9 +6,20 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-
+/**
+ * A class that builds the main screen of the Android App. It initializes all the buttons and allows the user
+ * to navigate between pages.
+ * See: activity_main.xml
+ *
+ * @author Shayla Hinkley
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Method that builds the main page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         configureSettingsBtn();
     }
 
+    /**
+     * Method that configures the Favorites button that
+     * allows the user to change to the Favorites page
+     */
     public void configureFavoritesBtn() {
         Button favoritesBtn = (Button) findViewById(R.id.favoritesBtn);
         favoritesBtn.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that configures the Stock Page button that
+     * allows the user to change to the Stock Page
+     */
     public void configureStockBtn() {
         Button stockBtn = (Button) findViewById(R.id.stockBtn);
         stockBtn.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that configures the Recents Button that
+     * allows the user to change to the Recents Page
+     */
     public void configureRecentsBtn() {
         Button recentsBtn = (Button) findViewById(R.id.recentsBtn);
         recentsBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that configures the Settings Button
+     * that allows the user to change to the Settings Page
+     */
     public void configureSettingsBtn() {
         Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -59,4 +86,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -67,11 +67,12 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="172dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"/>
-    <ListView
-            android:layout_width="368dp"
-            android:layout_height="482dp"
-            android:id="@+id/listViewStock"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="203dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="7dp"
-            android:layout_marginStart="7dp"/>
+    <TextView
+            android:text=""
+            android:layout_width="335dp"
+            android:layout_height="351dp"
+            android:id="@+id/stockTextView" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="204dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="12dp" android:layout_marginStart="12dp"
+            android:scrollbars = "vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
