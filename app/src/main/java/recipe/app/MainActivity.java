@@ -12,7 +12,6 @@ import android.os.Bundle;
  * See: activity_main.xml
  *
  * @author Shayla Hinkley
- * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
 //
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method that builds the main page
-     * @param savedInstanceState
+     * @param savedInstanceState - reference to Bundle Objecct that allows restore
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,16 +88,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-////
-////    public void setAge(int age) {
-////        this.age = age;
-////    }
-////
-//    public String getName() {
-//        return this.name;
-//    }
 }

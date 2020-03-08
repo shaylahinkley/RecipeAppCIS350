@@ -3,7 +3,14 @@ package recipe.app;
 import java.io.File;
 
 
+/**
+ * A class helped in the beginning of the project to list files from the folder and loaded in the recipes.
+ *
+ * @author Kameron Nelski
+ */
 public class Main {
+
+
     public static void main(String[] args){
 
         File folder = new File("C:\\Users\\Sparky\\Documents\\CIS 350 proj");
@@ -11,7 +18,10 @@ public class Main {
 
     }
 
-
+    /**
+     * Method that takes files and changes them into recipe objects
+     * @param folder - a File
+     */
     public static void listFilesForFolder(final File folder) {
         Recipe rec;
         Cookbook book = new Cookbook();

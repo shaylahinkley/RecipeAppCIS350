@@ -15,15 +15,11 @@ import androidx.constraintlayout.solver.widgets.Helper;
  * See: activity_settings_xml
  *
  * @author Shayla Hinkley
- * @version 1.0
  */
 public class SettingsPg extends AppCompatActivity {
 
-    private EditText editTextName;
-//    private HelperVariables helper = new HelperVariables();
+    /** instance variable that stores the name of the user */
     private String name;
-
-
 
     /**
      * Method that creates and builds the Settings Page
@@ -65,10 +61,18 @@ public class SettingsPg extends AppCompatActivity {
 
     }
 
+    /**
+     * Method that sets the name of the user
+     * @param name String of the user's name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Method that gets the name of the user
+     * @return String name
+     */
     public String getName() {
         return this.name;
     }
@@ -87,6 +91,9 @@ public class SettingsPg extends AppCompatActivity {
         });
     }
 
+    /**
+     * Configures the save name button
+     */
     public void configureSaveBtn() {
        Button saveSettingsBtn = (Button) findViewById(R.id.settingsBtn);
        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,10 +101,8 @@ public class SettingsPg extends AppCompatActivity {
            public void onClick(View v) {
 //               mainActivity.setName(editTextName.getText().toString());
 //               editTextName.setText(mainActivity.getName());
-
            }
        });
-
     }
 }
 

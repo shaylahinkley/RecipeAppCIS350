@@ -12,13 +12,12 @@ import android.os.Bundle;
  * See: activity_recent_pg.xml
  *
  * @author Shayla Hinkley
- * @version 1.0
  */
 public class RecentPg extends AppCompatActivity {
 
     /**
      * Method that builds and creates the Recents page
-     * @param savedInstanceState
+     * @param savedInstanceState - reference to Bundle Object that allows restore
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,7 +12,7 @@ import java.util.Scanner;
  *A class that contains a collections of recipes. And allows you to retrieve all or
  * a specific recipe
  *
- * @author Kameorn Nelski
+ * @author Kameron Nelski
  */
 public class Cookbook {
 

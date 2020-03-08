@@ -17,7 +17,6 @@ import java.util.List;
  * See: activity_stock_pg.xml
  *
  * @author Shayla Hinkley
- * @version 1.0
  */
 public class StockPg extends AppCompatActivity {
 
@@ -52,6 +51,7 @@ public class StockPg extends AppCompatActivity {
         setContentView(R.layout.activity_stock_pg);
         configureStockBackHomeBtn();
 
+
         textView = (TextView) findViewById(R.id.stockTextView);
         Button addToStockBtn = (Button) findViewById(R.id.addToStockBtn);
         final EditText quantityText = (EditText) findViewById(R.id.quantityEditText);
@@ -61,6 +61,18 @@ public class StockPg extends AppCompatActivity {
             public void onClick(View v) {
                 myArrayList.add(quantityText.getText().toString() + " " + nameIngredientText.getText().toString());
                     textView.setText(textView.getText().toString() + myArrayList.get(myArrayList.size() -1 ) + "\n");
+//
+//                ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
+//
+//                if(myInventory.getFridge() != null) {
+//                    if (myInventory.getFridge().contains(ingredient)) {
+//                        //error message, its in fridge, change quantity if user wants
+//                    } else {
+//                        myInventory.addToFridge(quantityText.getText().toString(), nameIngredientText.getText().toString());
+//                    }
+//                }
+//
+//                textView.setText(textView.getText().toString() + myInventory.getFridge().get(myInventory.getFridge().size() - 1) + "\n" );
             }
         });
     }

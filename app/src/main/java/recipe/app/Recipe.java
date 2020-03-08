@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  *A class that contains information about a recipe read in from a file.
  *
- * @author
+ * @author Kameron Nelski
  */
 
 public class Recipe {
