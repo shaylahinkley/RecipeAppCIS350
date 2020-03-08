@@ -15,6 +15,9 @@ import android.os.Bundle;
  * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
+//
+//    private String name = "John/Jane Doe";
+//    private int age;
 
     /**
      * Method that builds the main page
@@ -87,4 +90,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
+//
+//    public String getName() {
+//        return this.name;
+//    }
 }

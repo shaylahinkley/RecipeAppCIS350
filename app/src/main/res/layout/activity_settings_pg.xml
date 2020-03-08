@@ -36,8 +36,16 @@
             android:inputType="textPersonName"
             android:text="@string/john_jane_doe"
             android:ems="10"
-            android:id="@+id/editText"
-            android:textSize="12sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="98dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="88dp"
-            android:layout_marginStart="88dp" android:importantForAutofill="no"/>
+            android:id="@+id/editTextName"
+            android:textSize="12sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="80dp"
+            android:layout_marginStart="80dp" android:importantForAutofill="no"/>
+    <Button
+            android:text="@string/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveSettingsBtn" android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="292dp"
+            android:layout_marginStart="292dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

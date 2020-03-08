@@ -2,6 +2,7 @@ package recipe.app;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -17,6 +18,10 @@ import android.os.Bundle;
  */
 public class SettingsPg extends AppCompatActivity {
 
+    private EditText editTextName;
+
+
+
     /**
      * Method that creates and builds the Settings Page
      * @param savedInstanceState
@@ -27,6 +32,27 @@ public class SettingsPg extends AppCompatActivity {
         setContentView(R.layout.activity_settings_pg);
 
         configureSettingsBackHomeBtn();
+
+        Button saveSettingsBtn = (Button) findViewById(R.id.saveSettingsBtn);
+        final EditText nameText = (EditText) findViewById(R.id.editTextName);
+        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+//        editTextName = (EditText) findViewById(R.id.editTextName);
+//        Button saveSettingsBtn = (Button) findViewById(R.id.settingsBtn);
+//        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                mainActivity.setName(editTextName.getText().toString());
+////                editTextName.setText(mainActivity.getName());
+//                editTextName.setText(editTextName.getText().toString());
+//
+//            }
+//        });
+
     }
 
     /**
@@ -41,6 +67,19 @@ public class SettingsPg extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void configureSaveBtn() {
+       Button saveSettingsBtn = (Button) findViewById(R.id.settingsBtn);
+       saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+//               mainActivity.setName(editTextName.getText().toString());
+//               editTextName.setText(mainActivity.getName());
+
+           }
+       });
+
     }
 }
 

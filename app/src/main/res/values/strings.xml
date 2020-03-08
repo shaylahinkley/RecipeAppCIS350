@@ -16,5 +16,6 @@
     <string name="name">Name:</string>
     <string name="john_jane_doe">John/Jane Doe</string>
     <string name="textviewstock">textViewStock</string>
+    <string name="save">SAVE</string>
 
 </resources>
