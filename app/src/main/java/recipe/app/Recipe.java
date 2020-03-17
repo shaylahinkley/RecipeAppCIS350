@@ -2,6 +2,7 @@ package recipe.app;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -63,17 +64,15 @@ public class Recipe {
      *
      * @param recipeFile file path  to be opened passed in  as a string
      */
-    public Recipe(String recipeFile) {
+    public Recipe(InputStream recipeFile) {
 
         instructions = new ArrayList<String>();
         quantities = new ArrayList<String>();
         ingredients = new ArrayList<String>();
-        fileLoc = recipeFile;
+
 
         try {
-
-            FileInputStream recipe = new FileInputStream(recipeFile); //Open recipeFile
-            Scanner scr = new Scanner(recipe);
+            Scanner scr = new Scanner(recipeFile);
             scr.useDelimiter("[,\r\n|]+");
 
             //reads to end of file setting the arraylists
@@ -93,8 +92,8 @@ public class Recipe {
 
                 instructions.remove(0); // removes first empty instruction
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println("exception");
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 

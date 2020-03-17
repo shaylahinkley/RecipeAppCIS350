@@ -8,6 +8,7 @@ package recipe.app;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
@@ -44,8 +45,7 @@ public class Inventory {
      * Creates new fridge and ensures that there are no items in it
      */
     public Inventory() {
-        myCookbook = new Cookbook();
-        fillCookbook(new File("C:\\Users\\shayl\\IdeaProjects\\CIS350RecipeApp\\app\\src\\RecipeTestFiles"));
+        myCookbook = new Cookbook("Master Cookbook");
         fridge = new ArrayList<>();
         setNumIngredients(0);
     }
@@ -152,16 +152,10 @@ public class Inventory {
         return howSimilar.indexOf(recipeSimilarity);
     }
 
-    private void fillCookbook(final File folder) {
-        for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
-                fillCookbook(fileEntry);
-            } else {
-                Recipe rec = new Recipe((fileEntry + ""));
-                System.out.println(rec);
-                myCookbook.addRecipes(rec);
-            }
-        }
+    //ADD COMMENT
+    public void addToCookbook(InputStream file) {
+        Recipe rec = new Recipe(file);
+        myCookbook.addRecipes(rec);
     }
 
     /** Method that locates the most similar recipe given the fridge ArrayList

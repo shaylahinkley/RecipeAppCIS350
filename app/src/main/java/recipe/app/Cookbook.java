@@ -196,7 +196,7 @@ public class Cookbook {
      *
      * @param file name of cookbook to be loaded
      */
-    public void loadBook(String file) {
+    /*public void loadBook(String file) {
         try {
             FileInputStream fileStream = new FileInputStream(file + ".txt");
             Scanner scr = new Scanner(fileStream);
@@ -211,5 +211,5 @@ public class Cookbook {
             System.out.println("Exception");
         }
 
-    }
+    }*/
 }

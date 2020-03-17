@@ -6,6 +6,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,17 @@ public class StockPg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_pg);
         configureStockBackHomeBtn();
-
+        myInventory = new Inventory();
+        try {
+            for (String str : getAssets().list("")){
+                if(str.contains("test")) {
+                    myInventory.addToCookbook(getAssets().open(str));
+                }
+            }
+        System.out.println(myInventory.getMyCookbook() +  "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         textView = (TextView) findViewById(R.id.stockTextView);
         Button addToStockBtn = (Button) findViewById(R.id.addToStockBtn);
@@ -61,18 +72,20 @@ public class StockPg extends AppCompatActivity {
             public void onClick(View v) {
                 myArrayList.add(quantityText.getText().toString() + " " + nameIngredientText.getText().toString());
                     textView.setText(textView.getText().toString() + myArrayList.get(myArrayList.size() -1 ) + "\n");
-//
-//                ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
-//
-//                if(myInventory.getFridge() != null) {
-//                    if (myInventory.getFridge().contains(ingredient)) {
-//                        //error message, its in fridge, change quantity if user wants
-//                    } else {
-//                        myInventory.addToFridge(quantityText.getText().toString(), nameIngredientText.getText().toString());
-//                    }
-//                }
-//
-//                textView.setText(textView.getText().toString() + myInventory.getFridge().get(myInventory.getFridge().size() - 1) + "\n" );
+
+                ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
+
+                if(myInventory.getFridge() != null) {
+                    if (myInventory.getFridge().contains(ingredient)) {
+                        //error message, its in fridge, change quantity if user wants
+                    } else {
+                        myInventory.addToFridge(quantityText.getText().toString(), nameIngredientText.getText().toString());
+                   }
+              }
+                        quantityText.setText("");
+                        nameIngredientText.setText("");
+
+                textView.setText(textView.getText().toString() + myInventory.getFridge().get(myInventory.getFridge().size() - 1) + "\n" );
             }
         });
     }
