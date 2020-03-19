@@ -6,10 +6,15 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 /**
  * A class that builds the Stock Page screen of the Android App. It allows the user to add
  * an ingredient with its quantity to the list of stuff that is currently in the stock(pantry)
@@ -28,7 +33,7 @@ public class StockPg extends AppCompatActivity {
     private Inventory myInventory;
 
     /** Private ArrayList that is used to display the different ingredients in the TextView for the User to see */
-    private ArrayList<String> myArrayList = new ArrayList<String>();
+    private ArrayList<String> myArrayList;
 
     /** The quantity of the ingredient that is added to the stock */
     private String quantity;
@@ -50,8 +55,11 @@ public class StockPg extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_pg);
-        configureStockBackHomeBtn();
+
         myInventory = new Inventory();
+        myArrayList = new ArrayList<String>();
+        configureStockBackHomeBtn();
+
         try {
             for (String str : getAssets().list("")){
                 if(str.contains("test")) {
@@ -63,14 +71,32 @@ public class StockPg extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        try {
+            InputStream stock = openFileInput("test.txt");
+            Scanner scr = new Scanner(stock);
+            while(scr.hasNextLine()){
+                myArrayList.add(scr.nextLine());
+                // System.out.println(items);
+            }
+
+            stock.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
         textView = (TextView) findViewById(R.id.stockTextView);
         Button addToStockBtn = (Button) findViewById(R.id.addToStockBtn);
+
+        textView.setText(myArrayList.toString());
+
         final EditText quantityText = (EditText) findViewById(R.id.quantityEditText);
         final EditText nameIngredientText = (EditText) findViewById(R.id.nameOfIngredientEditText);
         addToStockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myArrayList.add(quantityText.getText().toString() + " " + nameIngredientText.getText().toString());
+                myArrayList.add(quantityText.getText().toString() + " --- " + nameIngredientText.getText().toString());
                     textView.setText(textView.getText().toString() + myArrayList.get(myArrayList.size() -1 ) + "\n");
 
                 ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
@@ -98,10 +124,27 @@ public class StockPg extends AppCompatActivity {
         Button stockBackHomeBtn = (Button) findViewById(R.id.stockBackHomeBtn);
         stockBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                try {
+                    FileOutputStream fileOutputStream = openFileOutput("test.txt", MODE_PRIVATE);
+                    PrintWriter printWriter = new PrintWriter(fileOutputStream);
+
+                    for (String s : myArrayList) {
+                        printWriter.println(s);
+                        System.out.println(s);
+                    }
+
+                    printWriter.flush();
+                    printWriter.close();
+                    fileOutputStream.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 finish();
             }
         });
     }
+
 }
 
