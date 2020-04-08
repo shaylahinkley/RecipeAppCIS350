@@ -85,35 +85,72 @@ public class StockPg extends AppCompatActivity {
         }
 
 
+        //adding stock list view id
+        ListView stockListView = (ListView) findViewById(R.id.stockListView);
 
-        textView = (TextView) findViewById(R.id.stockTextView);
+        //array adapter for the array list of stock items to put into the list view
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
+        stockListView.setAdapter(arrayAdapter);
+
+//        textView = (TextView) findViewById(R.id.stockTextView);
+
+        //id for the add to stock button
         Button addToStockBtn = (Button) findViewById(R.id.addToStockBtn);
 
-        textView.setText(myArrayList.toString());
+//        textView.setText(myArrayList.toString());
 
+        //id for the edit text areas of quantity and name ingredient text
         final EditText quantityText = (EditText) findViewById(R.id.quantityEditText);
         final EditText nameIngredientText = (EditText) findViewById(R.id.nameOfIngredientEditText);
+
+        //adds a listener to the add to stock button to take action
         addToStockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 myArrayList.add(quantityText.getText().toString() + " --- " + nameIngredientText.getText().toString());
-                    textView.setText(textView.getText().toString() + myArrayList.get(myArrayList.size() -1 ) + "\n");
+//                    textView.setText(textView.getText().toString() + myArrayList.get(myArrayList.size() -1 ) + "\n");
 
-                ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
-
-                if(myInventory.getFridge() != null) {
-                    if (myInventory.getFridge().contains(ingredient)) {
-                        //error message, its in fridge, change quantity if user wants
-                    } else {
-                        myInventory.addToFridge(quantityText.getText().toString(), nameIngredientText.getText().toString());
-                   }
-              }
-                        quantityText.setText("");
-                        nameIngredientText.setText("");
-
-                textView.setText(textView.getText().toString() + myInventory.getFridge().get(myInventory.getFridge().size() - 1) + "\n" );
+//
+//                ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
+//
+//                if(myInventory.getFridge() != null) {
+//                    if (myInventory.getFridge().contains(ingredient)) {
+//                        //error message, its in fridge, change quantity if user wants
+//                    } else {
+//                        myInventory.addToFridge(quantityText.getText().toString(), nameIngredientText.getText().toString());
+//                   }
+//              }
+//                        quantityText.setText("");
+//                        nameIngredientText.setText("");
+//
+//                textView.setText(textView.getText().toString() + myInventory.getFridge().get(myInventory.getFridge().size() - 1) + "\n" );
             }
         });
+
+//        final EditText quantityText = (EditText) findViewById(R.id.quantityEditText);
+//        final EditText nameIngredientText = (EditText) findViewById(R.id.nameOfIngredientEditText);
+//        addToStockBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                myArrayList.add(quantityText.getText().toString() + " --- " + nameIngredientText.getText().toString());
+//                    textView.setText(textView.getText().toString() + myArrayList.get(myArrayList.size() -1 ) + "\n");
+//
+//                ingredient = new Ingredients(quantityText.getText().toString(), nameIngredientText.getText().toString());
+//
+//                if(myInventory.getFridge() != null) {
+//                    if (myInventory.getFridge().contains(ingredient)) {
+//                        //error message, its in fridge, change quantity if user wants
+//                    } else {
+//                        myInventory.addToFridge(quantityText.getText().toString(), nameIngredientText.getText().toString());
+//                   }
+//              }
+//                        quantityText.setText("");
+//                        nameIngredientText.setText("");
+//
+//                textView.setText(textView.getText().toString() + myInventory.getFridge().get(myInventory.getFridge().size() - 1) + "\n" );
+//            }
+//        });
     }
 
     /**
