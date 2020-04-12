@@ -46,6 +46,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/saveSettingsBtn" android:textSize="12sp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="96dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="292dp"
-            android:layout_marginStart="292dp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="240dp"
+            android:layout_marginStart="240dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
