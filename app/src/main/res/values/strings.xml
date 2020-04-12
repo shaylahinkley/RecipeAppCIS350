@@ -18,5 +18,6 @@
     <string name="textviewstock">textViewStock</string>
     <string name="save">SAVE</string>
     <string name="recipe">recipe</string>
+    <string name="search">SEARCH</string>
 
 </resources>

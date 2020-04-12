@@ -1,17 +1,16 @@
 package recipe.app;
 
 
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +22,9 @@ import java.util.ArrayList;
  */
 public class RecentPg extends AppCompatActivity {
 
+    private ArrayList<String> recipeNames;
     private ArrayAdapter arrayAdapter;
+    private Cookbook recipe;
     /**
      * Method that builds and creates the Recents page
      * @param savedInstanceState - reference to Bundle Object that allows restore
@@ -34,8 +35,11 @@ public class RecentPg extends AppCompatActivity {
         setContentView(R.layout.activity_recent_pg);
         configureRecentsBacktoHomeButton();
 
-        //example arraylist to get search feature working
-        ArrayList<String> recipeNames = new ArrayList<>();
+        recipe = new Cookbook();
+        recipeNames = new ArrayList<String>();
+
+//        //example arraylist to get search feature working
+        recipeNames = new ArrayList<String>();
         recipeNames.add("Chicken parm");
         recipeNames.add("Icecream");
         recipeNames.add("Chicken alfredo");
@@ -54,14 +58,15 @@ public class RecentPg extends AppCompatActivity {
         recipeNames.add("Pizza bagels");
 
         //adapter for array - can be used for example array and actual array
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeNames);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,recipeNames);
 
         //setting up the list view
         ListView listView = (ListView) findViewById(R.id.searchListView);
         listView.setAdapter(arrayAdapter);
 
+        //setting up the search filter
+        final EditText searchFilter = (EditText) findViewById(R.id.searchEditText);
 
-        EditText searchFilter = (EditText) findViewById(R.id.searchEditText);
         searchFilter.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -76,6 +81,14 @@ public class RecentPg extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+
+        //setting on click listener for the list view
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(RecentPg.this, Pop.class));
             }
         });
     }
@@ -94,4 +107,5 @@ public class RecentPg extends AppCompatActivity {
             }
         });
     }
+
 }
