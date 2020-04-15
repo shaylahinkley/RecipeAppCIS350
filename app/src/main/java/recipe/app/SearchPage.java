@@ -10,8 +10,12 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * A class that builds the Recents Page.
@@ -80,6 +84,20 @@ public class SearchPage extends AppCompatActivity {
             recipeNames.add(r.getName());
         }
 
+
+        try {
+            InputStream fav = openFileInput("test2.txt");
+            Scanner scr = new Scanner(fav);
+            while (scr.hasNextLine()) {
+                favoriteRecipes.add(scr.nextLine());
+                // System.out.println(items);
+            }
+
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         //adapter for array - can be used for example array and actual array
         arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, recipeNames);
@@ -138,6 +156,7 @@ public class SearchPage extends AppCompatActivity {
             }
         });
 
+
     }
 
     /**
@@ -151,6 +170,22 @@ public class SearchPage extends AppCompatActivity {
         recentsBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                try {
+                    FileOutputStream fileOutputStream = openFileOutput("test2.txt", MODE_PRIVATE);
+                    PrintWriter printWriter = new PrintWriter(fileOutputStream);
+
+                    for (String s : favoriteRecipes) {
+                        printWriter.println(s);
+                        System.out.println(s);
+                    }
+
+                    printWriter.flush();
+                    printWriter.close();
+                    fileOutputStream.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 finish();
             }
         });

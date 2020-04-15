@@ -158,6 +158,7 @@ public class StockPg extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 myArrayList.remove(position);
                 arrayAdapter.notifyDataSetChanged();
+               Toast.makeText(getBaseContext(), "Item deleted", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
