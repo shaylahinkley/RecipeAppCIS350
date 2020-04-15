@@ -7,11 +7,7 @@ import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -106,7 +102,6 @@ public class StockPg extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         //adding stock list view id
         ListView stockListView = (ListView) findViewById(R.id.stockListView);
 
@@ -143,12 +138,11 @@ public class StockPg extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                    ArrayList<Recipe> r = myInventory.getMyCookbook().getRecipes();
-                    ArrayList<Ingredients> ingredientsArrayList = new ArrayList<>();
-                    for(String s : myArrayList){
-
-                        ingredientsArrayList.add(new Ingredients("",s));
-                    }
+                ArrayList<Recipe> r = myInventory.getMyCookbook().getRecipes();
+                ArrayList<Ingredients> ingredientsArrayList = new ArrayList<>();
+                for(String s : myArrayList){
+                    ingredientsArrayList.add(new Ingredients("",s));
+                }
                    //System.out.println(  myInventory.findRecipe(ingredientsArrayList));
 
                 //sends information to the pop activity class
@@ -160,8 +154,16 @@ public class StockPg extends AppCompatActivity {
 
                 //starts the activity
                 startActivity(intent);
+            }
+        });
 
-
+        //removing item from arraylist on the screen when user holds a long click
+        stockListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                myArrayList.remove(position);
+                arrayAdapter.notifyDataSetChanged();
+                return false;
             }
         });
     }
