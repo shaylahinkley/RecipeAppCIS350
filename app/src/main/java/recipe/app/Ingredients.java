@@ -1,25 +1,25 @@
 package recipe.app;
 
 /** A class that creates an ingredients object used in the Recipe
- * and Inventory class
+ * and Inventory class.
  *
  * @author Christian Van Eerden
  */
 public class Ingredients {
 
     /**
-     * How much of a certain ingredient
+     * How much of a certain ingredient.
      */
     private String quantity;
 
     /**
-     * Name of a certain ingredient
+     * Name of a certain ingredient.
      */
     private String name;
 
     /**
      * Default constructor for ingredients,
-     * creates an object with no name or quantity
+     * creates an object with no name or quantity.
      */
     public Ingredients() {
         setName(null);
@@ -28,18 +28,18 @@ public class Ingredients {
 
     /**
      * Constructor for ingredients
-     * Creates ingredients object given quantity and name
+     * Creates ingredients object given quantity and name.
      *
-     * @param quantity - How much of a certain ingredient
-     * @param name     - Name of a certain ingredient
+     * @param newQuantity - How much of a certain ingredient
+     * @param newName     - Name of a certain ingredient
      */
-    public Ingredients(String quantity, String name) {
-        setName(name);
-        setQuantity(quantity);
+    public Ingredients(final String newQuantity, final String newName) {
+        setName(newName);
+        setQuantity(newQuantity);
     }
 
     /**
-     * Get method for quantity
+     * Get method for quantity.
      *
      * @return String quantity
      */
@@ -48,16 +48,16 @@ public class Ingredients {
     }
 
     /**
-     * Set method for quantity
+     * Set method for quantity.
      *
-     * @param quantity
+     * @param newQuantity quantity to be assigned
      */
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public void setQuantity(final String newQuantity) {
+        this.quantity = newQuantity;
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
      * @return String name
      */
@@ -66,20 +66,22 @@ public class Ingredients {
     }
 
     /**
-     * Set method for name
+     * Set method for name.
      *
-     * @param name
+     * @param newName String name
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(final String newName) {
+        this.name = newName;
     }
 
     /**
-     * Overridden toString method for ingredients
+     * Overridden toString method for ingredients.
+     * @param ingredient ingredient to be made into a string
+     * @return String string version of the ingredient
      **/
-    public String toString(Ingredients Ingredient) {
+    public String toString(final Ingredients ingredient) {
         String newString;
-        newString = Ingredient.getQuantity() + " | " + Ingredient.getName();
+        newString = ingredient.getQuantity() + " | " + ingredient.getName();
         return newString;
     }
 }

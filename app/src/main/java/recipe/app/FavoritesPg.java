@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
- * A class that builds the Favorites screen of the Android App. It allows the user to view
- * their favorite recipes in the app. This will be fully functioning in future releases
+ * A class that builds the Favorites screen of the Android App.
+ * It allows the user to view their favorite recipes in the app.
+ * This will be fully functioning in future releases
  * See: activity_favorites_pg.xml
  *
  * @author Shayla Hinkley
@@ -16,7 +17,7 @@ import android.os.Bundle;
 public class FavoritesPg extends AppCompatActivity {
 
     /**
-     * Method that builds and creates the Favorites Page
+     * Method that builds and creates the Favorites Page.
      * @param savedInstanceState
      */
     @Override
@@ -29,13 +30,13 @@ public class FavoritesPg extends AppCompatActivity {
 
     /**
      * Method that configures a button that allows
-     * the user to navigate back to the home page when the button is clicked
+     * the user to navigate back to the home page when the button is clicked.
      */
     public void configureFavBacktoHomeButton() {
         Button favBackHomeBtn = (Button) findViewById(R.id.favBackHomeBtn);
         favBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 finish();
             }
         });

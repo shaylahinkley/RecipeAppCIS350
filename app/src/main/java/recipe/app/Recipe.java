@@ -1,10 +1,8 @@
 package recipe.app;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *A class that contains information about a recipe read in from a file.
@@ -16,55 +14,57 @@ public class Recipe {
 
 
     /**
-     * File location
+     * File location.
      */
     private String fileLoc;
 
     /**
-     * number of ingredients in the recipe
+     * number of ingredients in the recipe.
      */
     private int ingredientCount;
 
     /**
-     * number of instruction steps in the recipe
+     * number of instruction steps in the recipe.
      */
     private int stepCount;
 
     /**
-     * name of the recipe
+     * name of the recipe.
      */
     private String name;
 
     /**
-     * recipe instructions
+     * recipe instructions.
      */
     private ArrayList instructions;
 
     /**
-     * quantities of needed ingredients
+     * quantities of needed ingredients.
      */
     private ArrayList quantities;
 
     /**
-     * recipes needed ingredients
+     * recipes needed ingredients.
      */
     private ArrayList ingredients;
 
+    //ADD COMMENT
     public String getFileLoc() {
         return fileLoc;
     }
 
-    public void setFileLoc(String fileLoc) {
-        this.fileLoc = fileLoc;
+    //ADD COMMENT
+    public void setFileLoc(final String newFileLoc) {
+        this.fileLoc = newFileLoc;
     }
 
 
     /**
-     * Constructor for a recipeFile
+     * Constructor for a recipeFile.
      *
      * @param recipeFile file path  to be opened passed in  as a string
      */
-    public Recipe(InputStream recipeFile) {
+    public Recipe(final InputStream recipeFile) {
 
         instructions = new ArrayList<String>();
         quantities = new ArrayList<String>();
@@ -98,10 +98,11 @@ public class Recipe {
     }
 
     /**
-     * Overridden toString method for a recipe object
+     * Overridden toString method for a recipe object.
      *
      * @return a String representation of a recipe
      **/
+    @Override
     public String toString() {
         String str = name + "\n";
         for (int i = 0; i < ingredientCount; ++i) {
@@ -114,7 +115,7 @@ public class Recipe {
     }
 
     /**
-     * get method for ingredientCount
+     * get method for ingredientCount.
      *
      * @return ingredientCount
      */
@@ -123,16 +124,16 @@ public class Recipe {
     }
 
     /**
-     * set method for ingredientCount
+     * set method for ingredientCount.
      *
-     * @param ingredientCount new ingredientCount
+     * @param myIngredientCount new ingredientCount
      */
-    public void setIngredientCount(int ingredientCount) {
-        this.ingredientCount = ingredientCount;
+    public void setIngredientCount(final int myIngredientCount) {
+        this.ingredientCount = myIngredientCount;
     }
 
     /**
-     * get method for stepCount
+     * get method for stepCount.
      *
      * @return stepCount
      */
@@ -141,16 +142,16 @@ public class Recipe {
     }
 
     /**
-     * set method for stepCount
+     * set method for stepCount.
      *
-     * @param stepCount new number of steps
+     * @param myStepCount new number of steps
      */
-    public void setStepCount(int stepCount) {
-        this.stepCount = stepCount;
+    public void setStepCount(final int myStepCount) {
+        this.stepCount = myStepCount;
     }
 
     /**
-     * get method for name
+     * get method for name.
      *
      * @return name
      */
@@ -159,16 +160,16 @@ public class Recipe {
     }
 
     /**
-     * set method for name
+     * set method for name.
      *
-     * @param name new name
+     * @param newName new name
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(final String newName) {
+        this.name = newName;
     }
 
     /**
-     * get method for instructions
+     * get method for instructions.
      *
      * @return instructions
      */
@@ -177,18 +178,18 @@ public class Recipe {
     }
 
     /**
-     * set method for instructions
+     * set method for instructions.
      *
-     * @param instructions arrayList to be set as the new set of instructions
+     * @param newInstructions arrayList to be set as the new set of instructions
      */
-    public void setInstructions(ArrayList instructions) {
-        if (instructions.size() == this.stepCount) {
-            this.instructions = instructions;
+    public void setInstructions(final ArrayList newInstructions) {
+        if (newInstructions.size() == this.stepCount) {
+            this.instructions = newInstructions;
         }
     }
 
     /**
-     * get method for quantities
+     * get method for quantities.
      *
      * @return quantifies
      */
@@ -197,18 +198,18 @@ public class Recipe {
     }
 
     /**
-     * set method for quantities
+     * set method for quantities.
      *
-     * @param quantities arrayList of new quantities
+     * @param newQuantities arrayList of new quantities
      */
-    public void setQuantities(ArrayList quantities) {
+    public void setQuantities(final ArrayList newQuantities) {
         if (ingredientCount == quantities.size()) {
-            this.quantities = quantities;
+            this.quantities = newQuantities;
         }
     }
 
     /**
-     * get method for ingredients
+     * get method for ingredients.
      *
      * @return ingredients
      */
@@ -217,13 +218,13 @@ public class Recipe {
     }
 
     /**
-     * set method for ingredients
+     * set method for ingredients.
      *
-     * @param ingredients arrayList of new ingredients
+     * @param newIngredients arrayList of new ingredients
      */
-    public void setIngredients(ArrayList ingredients) {
+    public void setIngredients(final ArrayList newIngredients) {
         if (ingredients.size() == ingredientCount) {
-            this.ingredients = ingredients;
+            this.ingredients = newIngredients;
         }
     }
 }

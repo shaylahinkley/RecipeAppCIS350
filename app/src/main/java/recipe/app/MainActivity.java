@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
- * A class that builds the main screen of the Android App. It initializes all the buttons and allows the user
+ * A class that builds the main screen of the Android App.
+ * It initializes all the buttons and allows the user
  * to navigate between pages.
  * See: activity_main.xml
  *
@@ -19,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
 //    private int age;
 
     /**
-     * Method that builds the main page
-     * @param savedInstanceState - reference to Bundle Objecct that allows restore
+     * Method that builds the main page.
+     * @param savedInstanceState - reference to
+     *                           Bundle Objecct that allows restore
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method that configures the Favorites button that
-     * allows the user to change to the Favorites page
+     * allows the user to change to the Favorites page.
      */
     public void configureFavoritesBtn() {
         Button favoritesBtn = (Button) findViewById(R.id.favoritesBtn);
         favoritesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
+            public void onClick(final View view) {
                 startActivity(new Intent(MainActivity.this, FavoritesPg.class));
             }
         });
@@ -49,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method that configures the Stock Page button that
-     * allows the user to change to the Stock Page
+     * allows the user to change to the Stock Page.
      */
     public void configureStockBtn() {
         Button stockBtn = (Button) findViewById(R.id.stockBtn);
         stockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
+            public void onClick(final View view) {
                 startActivity(new Intent(MainActivity.this, StockPg.class));
             }
         });
@@ -63,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method that configures the Recents Button that
-     * allows the user to change to the Recents Page
+     * allows the user to change to the Recents Page.
      */
     public void configureRecentsBtn() {
         Button recentsBtn = (Button) findViewById(R.id.recentsBtn);
         recentsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
+            public void onClick(final View view) {
                 startActivity(new Intent(MainActivity.this, RecentPg.class));
             }
         });
@@ -77,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method that configures the Settings Button
-     * that allows the user to change to the Settings Page
+     * that allows the user to change to the Settings Page.
      */
     public void configureSettingsBtn() {
         Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
+            public void onClick(final View view) {
                 startActivity(new Intent(MainActivity.this, SettingsPg.class));
             }
         });

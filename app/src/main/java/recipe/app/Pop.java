@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 
 /**
- * Class that allows pop up windows to be used when in the search section of the app. This class controls the aspects
+ * Class that allows pop up windows to be used when
+ * in the search section of the app. This class controls the aspects
  * of the screen when an item from the searched item list is pressed
  */
 public class Pop extends Activity {
     @Override
-    protected void onCreate(Bundle saveInstanceState) {
+    protected void onCreate(final Bundle saveInstanceState) {
 
         super.onCreate(saveInstanceState);
         setContentView(R.layout.searchpopwindow);
@@ -21,6 +22,6 @@ public class Pop extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width*0.8), (int) (height * 0.6));
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
     }
 }

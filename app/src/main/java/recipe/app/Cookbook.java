@@ -1,39 +1,38 @@
 package recipe.app;
 
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 /**
- *A class that contains a collections of recipes. And allows you to retrieve all or
- * a specific recipe
+ *A class that contains a collections of recipes. And allows you to
+ * retrieve all or a specific recipe.
  *
  * @author Kameron Nelski
  */
 public class Cookbook {
 
     /**
-     * The arrayList of recipes held by the cookbook
+     * The arrayList of recipes held by the cookbook.
      */
     private ArrayList<Recipe> recipes;
 
     /**
-     * The name of the cookbook
+     * The name of the cookbook.
      */
     private String name;
 
     /**
-     * How many recipes are in the cookbook
+     * How many recipes are in the cookbook.
      */
     private int numRecipes;
 
     /**
      * Default constructor for cookbook
-     * sets recipes to an empty arrayList, name to null, and number of recipes to 0
+     * sets recipes to an empty arrayList,
+     * name to null, and number of recipes to 0.
      */
     public Cookbook() {
         recipes = new ArrayList<>();
@@ -43,58 +42,61 @@ public class Cookbook {
 
     /**
      * Constructor for cookbook.
-     * Sets recipes to an empty arrayList, name to param name, and number of recipes to 0
+     * Sets recipes to an empty arrayList,
+     * name to param name, and number of recipes to 0.
      *
-     * @param name name of created cookbook
+     * @param newName name of created cookbook
      */
-    public Cookbook(String name) {
+    public Cookbook(final String newName) {
         recipes = new ArrayList<>();
-        this.name = name;
+        this.name = newName;
         numRecipes = 0;
     }
 
     /**
-     * Copy constuctor for a cookbook
+     * Copy constuctor for a cookbook.
      *
      * @param originalBook cookbook being copied.
      */
-    public Cookbook(Cookbook originalBook) {
+    public Cookbook(final Cookbook originalBook) {
         this.name = originalBook.getName();
         this.recipes = originalBook.getRecipes();
         this.numRecipes = originalBook.getNumRecipes();
     }
 
     /**
-     * Copy constructor for a cookbook that allows for naming new cookbook
+     * Copy constructor for a cookbook that allows for naming new cookbook.
      *
      * @param originalBook cookbook being copied
-     * @param name         name of the new cookbook
+     * @param newName         name of the new cookbook
      */
-    public Cookbook(Cookbook originalBook, String name) {
-        this.name = name;
+    public Cookbook(final Cookbook originalBook, final String newName) {
+        this.name = newName;
         this.recipes = originalBook.getRecipes();
         this.numRecipes = originalBook.getNumRecipes();
     }
 
     /**
-     * Get method for a recipe in a known location
+     * Get method for a recipe in a known location.
      *
      * @param index location of recipe
-     * @return recipie at location i
+     * @return recipe at location i
      */
-    public Recipe getRecipe(int index) {
+    public Recipe getRecipe(final int index) {
         return recipes.get(index);
     }
 
     /**
-     * Get method for a recipe with a given name. Converts both to uppercase so it is not case sensitive
+     * Get method for a recipe with a given name.
+     * Converts both to uppercase so it is not case sensitive.
      *
-     * @param name of desired recipe
+     * @param newName of desired recipe
      * @return recipe with name name or null if no recipe is found
      */
-    public Recipe getRecipe(String name) {
+    public Recipe getRecipe(final String newName) {
         for (int i = 0; i < this.recipes.size(); ++i) {
-            if (this.recipes.get(i).getName().toUpperCase().equals(name.toUpperCase())) {
+            if (this.recipes.get(i).getName().toUpperCase()
+                    .equals(newName.toUpperCase())) {
                 return this.recipes.get(i);
             }
         }
@@ -102,7 +104,7 @@ public class Cookbook {
     }
 
     /**
-     * Get method for recipes
+     * Get method for recipes.
      *
      * @return arrayList Recipes
      */
@@ -111,27 +113,27 @@ public class Cookbook {
     }
 
     /**
-     * Method to add new recipes to a cookbook, also increments numRecipes
+     * Method to add new recipes to a cookbook, also increments numRecipes.
      *
      * @param recipe recipe to be added
      */
-    public void addRecipes(Recipe recipe) {
+    public void addRecipes(final Recipe recipe) {
         this.recipes.add(recipe);
         this.numRecipes++;
     }
 
     /**
-     * Method to remove recipes from a cookbook, also decrements numRecipes
+     * Method to remove recipes from a cookbook, also decrements numRecipes.
      *
      * @param recipe recipe to be removed
      */
-    public void removeRecipe(Recipe recipe) {
+    public void removeRecipe(final Recipe recipe) {
         this.recipes.remove(recipe);
         this.numRecipes--;
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
      * @return name
      */
@@ -140,16 +142,16 @@ public class Cookbook {
     }
 
     /**
-     * Set method for name
+     * Set method for name.
      *
-     * @param name cookbook's new name
+     * @param newName cookbook's new name
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(final String newName) {
+        this.name = newName;
     }
 
     /**
-     * get Method for numRecipe
+     * get Method for numRecipe.
      *
      * @return numRecipes
      */
@@ -158,10 +160,11 @@ public class Cookbook {
     }
 
     /**
-     * Overridden toString method for a cookbook object
+     * Overridden toString method for a cookbook object.
      *
      * @return a String representation of a cookbook
      **/
+    @Override
     public String toString() {
         String str = this.name + ": ";
         for (Recipe rec : this.recipes) {
@@ -173,11 +176,13 @@ public class Cookbook {
 
 
     /**
-     * Saves a cookbook to a file with the name of the cookbook, it holds file locations of recipes
+     * Saves a cookbook to a file with the name of the cookbook,
+     * it holds file locations of recipes.
      */
     public void saveBook() {
         try {
-            FileOutputStream savedBook = new FileOutputStream(this.name + ".txt");
+            FileOutputStream savedBook =
+                    new FileOutputStream(this.name + ".txt");
             PrintWriter outBook = new PrintWriter(savedBook);
             outBook.println(this.name);
             for (Recipe r : recipes) {
@@ -192,7 +197,7 @@ public class Cookbook {
     }
 
     /**
-     * Loads a cookbook from file into a cookbook
+     * Loads a cookbook from file into a cookbook.
      *
      * @param file name of cookbook to be loaded
      */
