@@ -105,22 +105,17 @@ public class StockPg extends AppCompatActivity {
         //adding stock list view id
         ListView stockListView = (ListView) findViewById(R.id.stockListView);
 
-        //array adapter for the array list of
-        // stock items to put into the list view
+        //array adapter for the array list of stock items to put into the list view
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, myArrayList);
         stockListView.setAdapter(arrayAdapter);
 
-//        textView = (TextView) findViewById(R.id.stockTextView);
 
         //id for the add to stock button
         Button addToStockBtn = (Button) findViewById(R.id.addToStockBtn);
 
-//        textView.setText(myArrayList.toString());
 
         //id for the edit text areas of quantity and name ingredient text
-       // final EditText quantityText = (
-               // EditText) findViewById(R.id.quantityEditText);
         final EditText nameIngredientText = (
                 EditText) findViewById(R.id.nameOfIngredientEditText);
 

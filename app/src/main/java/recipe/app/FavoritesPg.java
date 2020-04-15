@@ -43,7 +43,9 @@ public class FavoritesPg extends AppCompatActivity {
         setContentView(R.layout.activity_favorites_pg);
         configureFavBacktoHomeButton();
 
+//        favRecipes = (ArrayList<String>) getIntent().getSerializableExtra("favoriteslist");
         favRecipes = new ArrayList<String>();
+        favRecipes = SearchPage.favoriteRecipes;
 
         arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, favRecipes);
@@ -51,16 +53,6 @@ public class FavoritesPg extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.favListView);
         listView.setAdapter(arrayAdapter);
 
-        //checks if there are already favorites to be added to the screen
-        Intent intent = getIntent();
-        if(intent.getExtras() == null) {
-
-        } else {
-            Bundle bundle = getIntent().getExtras();
-            String name = bundle.getString("favorite");
-            favRecipes.add(name);
-            arrayAdapter.notifyDataSetChanged();
-        }
 
         //filtering the arraylist when searched
         final EditText searchFilter = (EditText) findViewById(R.id.favSearchEditText);
@@ -99,15 +91,16 @@ public class FavoritesPg extends AppCompatActivity {
             }
         });
 
-//        //removing item from favorites on the screen when user holds a long click
-//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                favRecipes.remove(position);
-//                arrayAdapter.notifyDataSetChanged();
-//                return false;
-//            }
-//        });
+        //removing item from favorites on the screen when user holds a long click
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                favRecipes.remove(position);
+                arrayAdapter.notifyDataSetChanged();
+                Toast.makeText(getBaseContext(), "Favorite Deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
     }
 

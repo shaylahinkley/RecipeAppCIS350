@@ -44,6 +44,8 @@ public class SearchPage extends AppCompatActivity {
     /** Arraylit of the recipes */
     ArrayList<Recipe> recipes;
 
+    public static ArrayList<String> favoriteRecipes;
+
 
     /**
      * Method that builds and creates the Recents page.
@@ -58,9 +60,7 @@ public class SearchPage extends AppCompatActivity {
 
         recipe = new Cookbook();
         recipeNames = new ArrayList<String>();
-
-        //adding recipe names to the arraylist
-
+        favoriteRecipes = new ArrayList<String>();
         myInventory = new Inventory();
 
         try {
@@ -79,21 +79,7 @@ public class SearchPage extends AppCompatActivity {
         for(Recipe r : recipes){
             recipeNames.add(r.getName());
         }
-        /*   recipeNames.add("Chicken Parm");
-        recipeNames.add("Icecream");
-        recipeNames.add("Chicken Alfredo");
-        recipeNames.add("Apple");
-        recipeNames.add("Banana");
-        recipeNames.add("Chocolate Chip Cookies");
-        recipeNames.add("Peanut Butter Cookies");
-        recipeNames.add("Steak");
-        recipeNames.add("Milk");
-        recipeNames.add("Pizza Bagels");
-        recipeNames.add("Stuffed Peppers");
-        recipeNames.add("Greek Yogurt");
-        recipeNames.add("Red Velvet Cake");
-        recipeNames.add("Sugar Cookies");
-*/
+
         //adapter for array - can be used for example array and actual array
         arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, recipeNames);
@@ -146,21 +132,12 @@ public class SearchPage extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String nameOfRecipe = (String) parent.getItemAtPosition(position);
-                clickedName = nameOfRecipe;
-                Intent intent = new Intent(SearchPage.this, FavoritesPg.class);
-                intent.putExtra("favorite", clickedName);
+                favoriteRecipes.add(nameOfRecipe);
                 Toast.makeText(getBaseContext(), "Added to Favorites", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
 
-//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                return false;
-//            }
-//        });
     }
 
     /**
