@@ -102,8 +102,9 @@ public class RecentPg extends AppCompatActivity {
             public void onItemClick(final AdapterView<?> parent,
                                     final View view, final int position,
                                     final long id) {
-                clickedName = recipeNames.get(position);
 
+                String item = (String) parent.getItemAtPosition(position);
+                clickedName = item;
                 //sends information to the pop activity class
                 Intent intent = new Intent(RecentPg.this, Pop.class);
                 intent.putExtra("detail", clickedName);
