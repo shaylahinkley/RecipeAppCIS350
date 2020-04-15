@@ -20,5 +20,6 @@
     <string name="recipe">recipe</string>
     <string name="search">SEARCH</string>
     <string name="pop_sample">POP SAMPLE</string>
+    <string name="recipe_name">recipe name</string>
 
 </resources>

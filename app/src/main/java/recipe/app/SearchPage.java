@@ -38,22 +38,18 @@ public class SearchPage extends AppCompatActivity {
      * the recipe name that is clicked to be used for pop up */
     private String clickedName;
 
+    /**Instance variable to pull and create an inventory */
+    Inventory myInventory;
+
+    /** Arraylit of the recipes */
+    ArrayList<Recipe> recipes;
+
+
     /**
      * Method that builds and creates the Recents page.
      * @param savedInstanceState - reference to Bundle Object
      *                           that allows restore
      */
-
-    /**
-     * Instance variable to pull and create an inventroy
-     **/
-    Inventory myInventory;
-
-    /**
-     *
-     */
-    ArrayList<Recipe> recipes;
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +140,27 @@ public class SearchPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //removing item from arraylist on the screen when user holds a long click
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String nameOfRecipe = (String) parent.getItemAtPosition(position);
+                clickedName = nameOfRecipe;
+                Intent intent = new Intent(SearchPage.this, FavoritesPg.class);
+                intent.putExtra("favorite", clickedName);
+                Toast.makeText(getBaseContext(), "Added to Favorites", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                return false;
+//            }
+//        });
     }
 
     /**
