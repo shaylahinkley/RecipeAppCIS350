@@ -31,8 +31,8 @@ public class RecentPg extends AppCompatActivity {
     /** Instance variable that allows the Cookbook class to link to front end for use */
     private Cookbook recipe;
 
+    /**Instance variable that stores the name of the recipe name that is clicked to be used for pop up */
     private String clickedName;
-
 
     /**
      * Method that builds and creates the Recents page.
