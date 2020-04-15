@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         recentsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                startActivity(new Intent(MainActivity.this, RecentPg.class));
+                startActivity(new Intent(MainActivity.this, SearchPage.class));
             }
         });
     }

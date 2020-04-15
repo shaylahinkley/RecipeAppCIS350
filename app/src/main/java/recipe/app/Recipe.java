@@ -104,10 +104,11 @@ public class Recipe {
      **/
     @Override
     public String toString() {
-        String str = name + "\n";
+        String str = name + "\n\n";
         for (int i = 0; i < ingredientCount; ++i) {
             str = str + this.quantities.get(i) + this.ingredients.get(i) + "\n";
         }
+        str +="\n";
         for (int i = 0; i < stepCount; ++i) {
             str = str + this.instructions.get(i) + "\n";
         }
@@ -213,7 +214,7 @@ public class Recipe {
      *
      * @return ingredients
      */
-    public ArrayList getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
 

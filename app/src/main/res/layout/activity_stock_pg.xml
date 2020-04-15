@@ -35,17 +35,19 @@
             app:layout_constraintTop_toBottomOf="@+id/stockBackHomeBtn"/>
 
     <Button
-            android:id="@+id/addToStockBtn"
-            android:layout_width="55dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/add"
-            android:textColor="#4C6B42"
-            android:textColorLink="#395E31"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/nameOfIngredientEditText"
-            app:layout_constraintTop_toBottomOf="@+id/addIngredientTitleTextView"/>
+        android:id="@+id/addToStockBtn"
+        android:layout_width="55dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/add"
+        android:textColor="#4C6B42"
+        android:textColorLink="#395E31"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/nameOfIngredientEditText"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 
     <Button
             android:id="@+id/stockBackHomeBtn"
@@ -59,50 +61,35 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-            android:id="@+id/nameOfIngredientEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/name_of_ingredient"
-            android:inputType="textPersonName"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/addToStockBtn"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/quantityEditText"
-            app:layout_constraintTop_toBottomOf="@+id/addIngredientTitleTextView"
-            tools:targetApi="o"/>
-
-    <EditText
-            android:id="@+id/quantityEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/quantity"
-            android:inputType="textPersonName"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/nameOfIngredientEditText"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addIngredientTitleTextView"
-            tools:targetApi="o"/>
+        android:id="@+id/nameOfIngredientEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/name_of_ingredient"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/addToStockBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addIngredientTitleTextView"
+        tools:targetApi="o" />
 
     <TextView
-            android:id="@+id/inYourStockTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/in_your_stock"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quantityEditText"/>
+        android:id="@+id/inYourStockTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/in_your_stock"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameOfIngredientEditText" />
 
     <ListView
             android:layout_width="410dp"
@@ -113,4 +100,15 @@
             android:scrollingCache="true" android:smoothScrollbar="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inYourStockTextView"/>
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="88dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toEndOf="@+id/addIngredientTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/stockTitleTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

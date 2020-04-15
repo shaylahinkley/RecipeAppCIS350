@@ -1,7 +1,12 @@
 package recipe.app;
 
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.input.InputManager;
+import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +55,16 @@ public class StockPg extends AppCompatActivity {
      * outputted to the screen once the user adds ingredients. */
     private TextView textView;
 
+    /**
+     * Button that searches for recipes based on stock
+     */
+    private Button searchButton;
+
+    /**
+     * Arraylist of ingredient names
+     */
+    private  ArrayList<String> ingredientName;
+
 
     /**
      * Method that builds and creates the Stock Page. It also adds ingredients
@@ -64,11 +79,12 @@ public class StockPg extends AppCompatActivity {
 
         myInventory = new Inventory();
         myArrayList = new ArrayList<String>();
+        searchButton = findViewById(R.id.searchButton);
         configureStockBackHomeBtn();
 
         try {
             for (String str : getAssets().list("")) {
-                if (str.contains("test")) {
+                if (str.contains("recipe")) {
                     myInventory.addToCookbook(getAssets().open(str));
                 }
             }
@@ -78,7 +94,7 @@ public class StockPg extends AppCompatActivity {
         }
 
         try {
-            InputStream stock = openFileInput("test.txt");
+            InputStream stock = openFileInput("test3.txt");
             Scanner scr = new Scanner(stock);
             while (scr.hasNextLine()) {
                 myArrayList.add(scr.nextLine());
@@ -108,8 +124,8 @@ public class StockPg extends AppCompatActivity {
 //        textView.setText(myArrayList.toString());
 
         //id for the edit text areas of quantity and name ingredient text
-        final EditText quantityText = (
-                EditText) findViewById(R.id.quantityEditText);
+       // final EditText quantityText = (
+               // EditText) findViewById(R.id.quantityEditText);
         final EditText nameIngredientText = (
                 EditText) findViewById(R.id.nameOfIngredientEditText);
 
@@ -117,69 +133,36 @@ public class StockPg extends AppCompatActivity {
         addToStockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-
-                myArrayList.add(quantityText.getText().toString()
-                        + " --- " + nameIngredientText.getText().toString());
-//                    textView.setText(textView.getText().toString()
-//                    + myArrayList.get(myArrayList.size() -1 ) + "\n");
-
-//
-//                ingredient = new Ingredients(
-//                quantityText.getText().toString(),
-//                nameIngredientText.getText().toString());
-//
-//                if(myInventory.getFridge() != null) {
-//                    if (myInventory.getFridge().contains(ingredient)) {
-//                        //error message, its in fridge,
-//                        change quantity if user wants
-//                    } else {
-//                        myInventory.addToFridge(
-//                        quantityText.getText().toString(),
-//                        nameIngredientText.getText().toString());
-//                   }
-//              }
-//                        quantityText.setText("");
-//                        nameIngredientText.setText("");
-//
-//                textView.setText(textView.getText().toString()
-//                + myInventory.getFridge().get(
-//                myInventory.getFridge().size() - 1) + "\n" );
+                myArrayList.add(nameIngredientText.getText().toString());
             }
         });
 
-//        final EditText quantityText = (
-//        EditText) findViewById(R.id.quantityEditText);
-//        final EditText nameIngredientText = (
-//        EditText) findViewById(R.id.nameOfIngredientEditText);
-//        addToStockBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                myArrayList.add(quantityText.getText().toString()
-//                + " --- " + nameIngredientText.getText().toString());
-//                    textView.setText(textView.getText().toString()
-//                    + myArrayList.get(myArrayList.size() -1 ) + "\n");
-//
-//                ingredient = new Ingredients(quantityText.getText().toString()
-//                , nameIngredientText.getText().toString());
-//
-//                if(myInventory.getFridge() != null) {
-//                    if (myInventory.getFridge().contains(ingredient)) {
-//                        //error message, its in fridge,
-//                        change quantity if user wants
-//                    } else {
-//                        myInventory.addToFridge(
-//                        quantityText.getText().toString(),
-//                        nameIngredientText.getText().toString());
-//                   }
-//              }
-//                        quantityText.setText("");
-//                        nameIngredientText.setText("");
-//
-//                textView.setText(textView.getText().toString()
-//                + myInventory.getFridge().get(
-//                myInventory.getFridge().size() - 1) + "\n" );
-//            }
-//        });
+
+        //Searched recipes based on stock
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                    ArrayList<Recipe> r = myInventory.getMyCookbook().getRecipes();
+                    ArrayList<Ingredients> ingredientsArrayList = new ArrayList<>();
+                    for(String s : myArrayList){
+
+                        ingredientsArrayList.add(new Ingredients("",s));
+                    }
+                   //System.out.println(  myInventory.findRecipe(ingredientsArrayList));
+
+                //sends information to the pop activity class
+                Intent intent = new Intent(StockPg.this, Pop.class);
+                intent.putExtra("detail", myInventory.findRecipe(ingredientsArrayList)
+                        .getName().replace(" ","")+ "_recipe");
+                System.out.println(myInventory.findRecipe(ingredientsArrayList).getName().replace
+                                (" ", "")+"_recipe");
+
+                //starts the activity
+                startActivity(intent);
+
+
+            }
+        });
     }
 
     /**
@@ -192,7 +175,7 @@ public class StockPg extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 try {
-                    FileOutputStream fileOutputStream = openFileOutput("test.txt", MODE_PRIVATE);
+                    FileOutputStream fileOutputStream = openFileOutput("test3.txt", MODE_PRIVATE);
                     PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
                     for (String s : myArrayList) {

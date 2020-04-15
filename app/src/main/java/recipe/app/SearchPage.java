@@ -10,6 +10,7 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author Shayla Hinkley
  */
-public class RecentPg extends AppCompatActivity {
+public class SearchPage extends AppCompatActivity {
 
     /** Instance variable for the arraylist of recipe names */
     private ArrayList<String> recipeNames;
@@ -42,6 +43,17 @@ public class RecentPg extends AppCompatActivity {
      * @param savedInstanceState - reference to Bundle Object
      *                           that allows restore
      */
+
+    /**
+     * Instance variable to pull and create an inventroy
+     **/
+    Inventory myInventory;
+
+    /**
+     *
+     */
+    ArrayList<Recipe> recipes;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +64,26 @@ public class RecentPg extends AppCompatActivity {
         recipeNames = new ArrayList<String>();
 
         //adding recipe names to the arraylist
-        recipeNames.add("Chicken Parm");
+
+        myInventory = new Inventory();
+
+        try {
+            for (String str : getAssets().list("")) {
+                if (str.contains("recipe")) {
+                    myInventory.addToCookbook(getAssets().open(str));
+                }
+            }
+            System.out.println(myInventory.getMyCookbook() +  "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        recipes = myInventory.getMyCookbook().getRecipes();
+
+        for(Recipe r : recipes){
+            recipeNames.add(r.getName());
+        }
+        /*   recipeNames.add("Chicken Parm");
         recipeNames.add("Icecream");
         recipeNames.add("Chicken Alfredo");
         recipeNames.add("Apple");
@@ -66,7 +97,7 @@ public class RecentPg extends AppCompatActivity {
         recipeNames.add("Greek Yogurt");
         recipeNames.add("Red Velvet Cake");
         recipeNames.add("Sugar Cookies");
-
+*/
         //adapter for array - can be used for example array and actual array
         arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, recipeNames);
@@ -87,7 +118,7 @@ public class RecentPg extends AppCompatActivity {
             @Override
             public void onTextChanged(final CharSequence s, final int start,
                                       final int before, final int count) {
-                (RecentPg.this).arrayAdapter.getFilter().filter(s);
+                (SearchPage.this).arrayAdapter.getFilter().filter(s);
             }
 
             @Override
@@ -106,8 +137,8 @@ public class RecentPg extends AppCompatActivity {
                 String item = (String) parent.getItemAtPosition(position);
                 clickedName = item;
                 //sends information to the pop activity class
-                Intent intent = new Intent(RecentPg.this, Pop.class);
-                intent.putExtra("detail", clickedName);
+                Intent intent = new Intent(SearchPage.this, Pop.class);
+                intent.putExtra("detail", clickedName.replace(" ", "")+ "_recipe");
 
                 //starts the activity
                 startActivity(intent);

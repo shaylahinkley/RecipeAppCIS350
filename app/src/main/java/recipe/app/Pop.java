@@ -1,8 +1,6 @@
 package recipe.app;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
@@ -10,7 +8,6 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Scanner;
 
 /**
  * Class that builds the pop up windows when a
@@ -28,7 +25,7 @@ public class Pop extends Activity {
 
    /**Instance variable that pulls the
     * clicked recipe name to enable information to be pushed to pop view */
-   private RecentPg search;
+   private SearchPage search;
 
 
     @Override
@@ -59,13 +56,20 @@ public class Pop extends Activity {
         String text = "";
 
         //adds the text from the file onto the pop up text view
+
+        //
+
         try {
-            InputStream is = getAssets().open(strippedName);
-            int size = is.available();
+            InputStream is = getAssets().open(clickedName);
+            Recipe recipe = new Recipe(is);
+            /*int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
-            is.close();
-            text = new String(buffer);
+            is.close();*/
+            System.out.println(recipe.toString());
+            text = new String(recipe.toString());
+
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }

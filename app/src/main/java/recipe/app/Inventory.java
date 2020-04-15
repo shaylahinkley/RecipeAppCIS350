@@ -130,7 +130,7 @@ public class Inventory {
     private ArrayList<String> allNames(
             final ArrayList<Ingredients> allIngredients) {
         ArrayList<String> ingredientNames = new ArrayList<>();
-        for (int i = 0; i < allIngredients.size(); i++) {
+        for (int i = 0; i < allIngredients.size() -1 ; i++) {
             ingredientNames.add(allIngredients.get(i).getName());
         }
         return ingredientNames;
@@ -143,7 +143,7 @@ public class Inventory {
      */
     private int getLargest(final ArrayList<Integer> howSimilar) {
         int recipeSimilarity = 0;
-        for (int i = 0; i < howSimilar.size(); i++) {
+        for (int i = 0; i < howSimilar.size() -1; i++) {
             if (howSimilar.get(i) > recipeSimilarity) {
                 recipeSimilarity = howSimilar.get(i);
             }
@@ -165,17 +165,22 @@ public class Inventory {
         int similarity;
         similarities = new ArrayList<>();
         ArrayList<Recipe> temp;
-        Recipe tempRecipe;
-        ArrayList<String> tempIngredients;
-        ArrayList<String> fridgeIngredients = allNames(myFridge);
         temp = myCookbook.getRecipes();
-        for (int i = 0; i < temp.size(); i++) {
-            similarity = 0;
-            tempRecipe = temp.get(i);
-            tempIngredients = tempRecipe.getIngredients();
-            for (int j = 0; j < tempIngredients.size(); j++) {
-                if (tempIngredients.contains(fridgeIngredients.get(j))) {
-                    similarity++;
+
+        String fridgeIng;
+
+            for(Recipe r :temp){
+                similarity = 0;
+                for (String tempIng : r.getIngredients()){
+                    tempIng = tempIng.toUpperCase();
+                    tempIng = tempIng.replace(" ","");
+                    for(Ingredients i : myFridge){
+                        fridgeIng = i.getName();
+                        fridgeIng = fridgeIng.toUpperCase();
+                        fridgeIng = fridgeIng.replace(" ","");
+                        if(tempIng.equals(fridgeIng)){
+                        similarity++;
+                        }
                 }
             }
             similarities.add(similarity);
