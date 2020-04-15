@@ -51,7 +51,7 @@ public class RecentPg extends AppCompatActivity {
         recipe = new Cookbook();
         recipeNames = new ArrayList<String>();
 
-       //example arraylist to get search feature working
+        //adding recipe names to the arraylist
         recipeNames.add("Chicken Parm");
         recipeNames.add("Icecream");
         recipeNames.add("Chicken Alfredo");
@@ -103,8 +103,12 @@ public class RecentPg extends AppCompatActivity {
                                     final View view, final int position,
                                     final long id) {
                 clickedName = recipeNames.get(position);
+
+                //sends information to the pop activity class
                 Intent intent = new Intent(RecentPg.this, Pop.class);
                 intent.putExtra("detail", clickedName);
+
+                //starts the activity
                 startActivity(intent);
             }
         });

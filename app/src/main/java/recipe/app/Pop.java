@@ -13,9 +13,12 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 /**
- * Class that allows pop up windows to be used when
- * in the search section of the app. This class controls the aspects
- * of the screen when an item from the searched item list is pressed
+ * Class that builds the pop up windows when a
+ * recipe is pressed in the settings/recents page.
+ * This class controls the aspects of the screen
+ * when an item from the searched item list is pressed
+ *
+ * @author Shayla Hinkley
  */
 public class Pop extends Activity {
 
@@ -67,7 +70,5 @@ public class Pop extends Activity {
             ex.printStackTrace();
         }
         textView.setText(text);
-
-
     }
 }
