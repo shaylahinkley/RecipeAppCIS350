@@ -112,7 +112,7 @@ public class StockPg extends AppCompatActivity {
 
         //array adapter for the array list of
         // stock items to put into the list view
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, myArrayList);
         stockListView.setAdapter(arrayAdapter);
 
@@ -134,6 +134,7 @@ public class StockPg extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 myArrayList.add(nameIngredientText.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
             }
         });
 
