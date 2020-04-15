@@ -86,7 +86,7 @@ public class SearchPage extends AppCompatActivity {
 
 
         try {
-            InputStream fav = openFileInput("test2.txt");
+            InputStream fav = openFileInput("favorites.txt");
             Scanner scr = new Scanner(fav);
             while (scr.hasNextLine()) {
                 favoriteRecipes.add(scr.nextLine());
@@ -167,16 +167,22 @@ public class SearchPage extends AppCompatActivity {
     public void configureRecentsBacktoHomeButton() {
         Button recentsBackHomeBtn = (
                 Button) findViewById(R.id.recentsBacktoHomeBtn);
+
+        final ArrayList<String> favorites = new ArrayList<>();
         recentsBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+
                 try {
-                    FileOutputStream fileOutputStream = openFileOutput("test2.txt", MODE_PRIVATE);
+                    FileOutputStream fileOutputStream = openFileOutput("favorites.txt", MODE_PRIVATE);
                     PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
                     for (String s : favoriteRecipes) {
-                        printWriter.println(s);
-                        System.out.println(s);
+                        if(!favorites.contains(s)) {
+                            printWriter.println(s);
+                            System.out.println(s);
+                            favorites.add(s);
+                        }
                     }
 
                     printWriter.flush();

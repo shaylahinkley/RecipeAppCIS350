@@ -8,7 +8,11 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * A class that builds the Favorites screen of the Android App.
@@ -45,7 +49,17 @@ public class FavoritesPg extends AppCompatActivity {
 
 //        favRecipes = (ArrayList<String>) getIntent().getSerializableExtra("favoriteslist");
         favRecipes = new ArrayList<String>();
-        favRecipes = SearchPage.favoriteRecipes;
+        try {
+            InputStream fav = openFileInput("favorites.txt");
+            Scanner scr = new Scanner(fav);
+            while (scr.hasNextLine()) {
+                favRecipes.add(scr.nextLine());
+            }
+
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, favRecipes);
@@ -110,9 +124,30 @@ public class FavoritesPg extends AppCompatActivity {
      */
     public void configureFavBacktoHomeButton() {
         Button favBackHomeBtn = (Button) findViewById(R.id.favBackHomeBtn);
+
+
+
+
         favBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+
+                try {
+                    FileOutputStream fileOutputStream = openFileOutput("favorites.txt", MODE_PRIVATE);
+                    PrintWriter printWriter = new PrintWriter(fileOutputStream);
+
+                    for (String s : favRecipes) {
+                        printWriter.println(s);
+                        System.out.println(s);
+                    }
+
+                    printWriter.flush();
+                    printWriter.close();
+                    fileOutputStream.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 finish();
             }
         });
