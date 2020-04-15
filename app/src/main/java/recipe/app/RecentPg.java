@@ -25,13 +25,16 @@ public class RecentPg extends AppCompatActivity {
     /** Instance variable for the arraylist of recipe names */
     private ArrayList<String> recipeNames;
 
-    /** Instance variable for the array adapter that is being used in list view */
+    /** Instance variable for the
+     * array adapter that is being used in list view */
     private ArrayAdapter arrayAdapter;
 
-    /** Instance variable that allows the Cookbook class to link to front end for use */
+    /** Instance variable that allows the
+     * Cookbook class to link to front end for use */
     private Cookbook recipe;
 
-    /**Instance variable that stores the name of the recipe name that is clicked to be used for pop up */
+    /**Instance variable that stores the name of
+     * the recipe name that is clicked to be used for pop up */
     private String clickedName;
 
     /**
@@ -49,7 +52,6 @@ public class RecentPg extends AppCompatActivity {
         recipeNames = new ArrayList<String>();
 
        //example arraylist to get search feature working
-//        recipeNames = new ArrayList<String>();
         recipeNames.add("Chicken Parm");
         recipeNames.add("Icecream");
         recipeNames.add("Chicken Alfredo");
@@ -64,8 +66,6 @@ public class RecentPg extends AppCompatActivity {
         recipeNames.add("Greek Yogurt");
         recipeNames.add("Red Velvet Cake");
         recipeNames.add("Sugar Cookies");
-
-//        recipeNames = recipe.getRecipes();
 
         //adapter for array - can be used for example array and actual array
         arrayAdapter = new ArrayAdapter<>(
