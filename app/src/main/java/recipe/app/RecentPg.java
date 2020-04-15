@@ -6,11 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,10 +21,19 @@ import java.util.ArrayList;
  * @author Shayla Hinkley
  */
 public class RecentPg extends AppCompatActivity {
-    //ADD COMMENTS
+
+    /** Instance variable for the arraylist of recipe names */
     private ArrayList<String> recipeNames;
+
+    /** Instance variable for the array adapter that is being used in list view */
     private ArrayAdapter arrayAdapter;
+
+    /** Instance variable that allows the Cookbook class to link to front end for use */
     private Cookbook recipe;
+
+    private String clickedName;
+
+
     /**
      * Method that builds and creates the Recents page.
      * @param savedInstanceState - reference to Bundle Object
@@ -43,24 +48,24 @@ public class RecentPg extends AppCompatActivity {
         recipe = new Cookbook();
         recipeNames = new ArrayList<String>();
 
-//        //example arraylist to get search feature working
-        recipeNames = new ArrayList<String>();
-        recipeNames.add("Chicken parm");
+       //example arraylist to get search feature working
+//        recipeNames = new ArrayList<String>();
+        recipeNames.add("Chicken Parm");
         recipeNames.add("Icecream");
-        recipeNames.add("Chicken alfredo");
+        recipeNames.add("Chicken Alfredo");
         recipeNames.add("Apple");
         recipeNames.add("Banana");
         recipeNames.add("Chocolate Chip Cookies");
-        recipeNames.add("Peanut butter cookies");
-        recipeNames.add("Mexican tacos");
-        recipeNames.add("Pineapple");
-        recipeNames.add("Dairy free");
-        recipeNames.add("Fries");
-        recipeNames.add("Butter");
+        recipeNames.add("Peanut Butter Cookies");
         recipeNames.add("Steak");
         recipeNames.add("Milk");
-        recipeNames.add("Stuffed peppers");
-        recipeNames.add("Pizza bagels");
+        recipeNames.add("Pizza Bagels");
+        recipeNames.add("Stuffed Peppers");
+        recipeNames.add("Greek Yogurt");
+        recipeNames.add("Red Velvet Cake");
+        recipeNames.add("Sugar Cookies");
+
+//        recipeNames = recipe.getRecipes();
 
         //adapter for array - can be used for example array and actual array
         arrayAdapter = new ArrayAdapter<>(
@@ -97,7 +102,10 @@ public class RecentPg extends AppCompatActivity {
             public void onItemClick(final AdapterView<?> parent,
                                     final View view, final int position,
                                     final long id) {
-                startActivity(new Intent(RecentPg.this, Pop.class));
+                clickedName = recipeNames.get(position);
+                Intent intent = new Intent(RecentPg.this, Pop.class);
+                intent.putExtra("detail", clickedName);
+                startActivity(intent);
             }
         });
     }

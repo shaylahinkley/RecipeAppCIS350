@@ -23,7 +23,7 @@
             android:id="@+id/stockBtn" app:layout_constraintEnd_toEndOf="parent"
     />
     <Button
-            android:text="@string/recents"
+            android:text="@string/search"
             android:layout_width="193dp"
             android:layout_height="304dp"
             android:id="@+id/recentsBtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="3dp"

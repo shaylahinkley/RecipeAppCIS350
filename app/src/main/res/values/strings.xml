@@ -19,5 +19,6 @@
     <string name="save">SAVE</string>
     <string name="recipe">recipe</string>
     <string name="search">SEARCH</string>
+    <string name="pop_sample">POP SAMPLE</string>
 
 </resources>
