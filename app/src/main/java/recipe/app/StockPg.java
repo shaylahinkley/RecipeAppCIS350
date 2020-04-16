@@ -1,13 +1,15 @@
 package recipe.app;
 
-import android.content.Context;
 import android.content.Intent;
-import android.hardware.input.InputManager;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,12 +54,12 @@ public class StockPg extends AppCompatActivity {
     private TextView textView;
 
     /**
-     * Button that searches for recipes based on stock
+     * Button that searches for recipes based on stock.
      */
     private Button searchButton;
 
     /**
-     * Arraylist of ingredient names
+     * Arraylist of ingredient names.
      */
     private  ArrayList<String> ingredientName;
 
@@ -65,7 +67,7 @@ public class StockPg extends AppCompatActivity {
     /**
      * Method that builds and creates the Stock Page. It also adds ingredients
      * to the ArrayList to be outputted to the screen once the user clicks the
-     * add to stock button
+     * add to stock button.
      * @param savedInstanceState ADD COMMENTS
      */
     @Override
@@ -113,7 +115,8 @@ public class StockPg extends AppCompatActivity {
         //adding stock list view id
         ListView stockListView = (ListView) findViewById(R.id.stockListView);
 
-        //array adapter for the array list of stock items to put into the list view
+        //array adapter for the array list of stock items
+        // to put into the list view
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, myArrayList);
         stockListView.setAdapter(arrayAdapter);
@@ -143,30 +146,35 @@ public class StockPg extends AppCompatActivity {
             public void onClick(final View v) {
                 ArrayList<Recipe> r = myInventory.getMyCookbook().getRecipes();
                 ArrayList<Ingredients> ingredientsArrayList = new ArrayList<>();
-                for(String s : myArrayList){
-                    ingredientsArrayList.add(new Ingredients("",s));
+                for (String s : myArrayList) {
+                    ingredientsArrayList.add(new Ingredients("", s));
                 }
-                   //System.out.println(  myInventory.findRecipe(ingredientsArrayList));
 
                 //sends information to the pop activity class
                 Intent intent = new Intent(StockPg.this, Pop.class);
-                intent.putExtra("detail", myInventory.findRecipe(ingredientsArrayList)
-                        .getName().replace(" ","")+ "_recipe");
-                System.out.println(myInventory.findRecipe(ingredientsArrayList).getName().replace
-                                (" ", "")+"_recipe");
+                intent.putExtra("detail", myInventory.
+                        findRecipe(ingredientsArrayList)
+                        .getName().replace(" ", "") +  "_recipe");
+                System.out.println(myInventory.findRecipe(ingredientsArrayList).
+                        getName().replace(" ", "") + "_recipe");
 
                 //starts the activity
                 startActivity(intent);
             }
         });
 
-        //removing item from arraylist on the screen when user holds a long click
-        stockListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        //removing item from arraylist on the
+        // screen when user holds a long click
+        stockListView.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(final AdapterView<?> parent,
+                                           final View view,
+                                           final int position, final long id) {
                 myArrayList.remove(position);
                 arrayAdapter.notifyDataSetChanged();
-               Toast.makeText(getBaseContext(), "Item deleted", Toast.LENGTH_SHORT).show();
+               Toast.makeText(getBaseContext(),
+                       "Item deleted", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -182,7 +190,8 @@ public class StockPg extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 try {
-                    FileOutputStream fileOutputStream = openFileOutput("test3.txt", MODE_PRIVATE);
+                    FileOutputStream fileOutputStream = openFileOutput(
+                            "test3.txt", MODE_PRIVATE);
                     PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
                     for (String s : myArrayList) {

@@ -26,23 +26,23 @@ import java.util.Scanner;
 public class FavoritesPg extends AppCompatActivity {
 
     /**Instance variable arraylist that
-     * holds the names of the favorite recipes */
+     * holds the names of the favorite recipes. */
     private ArrayList<String> favRecipes;
 
     /**Instance variable for the array
-     * adapter that is being used in the list view */
+     * adapter that is being used in the list view. */
     private ArrayAdapter arrayAdapter;
 
     /**Instance variable that holds the name of
-     * item that is clicked*/
+     * item that is clicked. */
     private String clickedName;
 
     /**
      * Method that builds and creates the Favorites Page.
-     * @param savedInstanceState
+     * @param savedInstanceState theme file you want opened
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
 
         //opens the theme file
         try {
@@ -81,20 +81,23 @@ public class FavoritesPg extends AppCompatActivity {
 
 
         //filtering the arraylist when searched
-        final EditText searchFilter = (EditText) findViewById(R.id.favSearchEditText);
+        final EditText searchFilter = (
+                EditText) findViewById(R.id.favSearchEditText);
         searchFilter.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(final CharSequence s, final int start,
+                                          final int count, final int after) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(final CharSequence s, final int start,
+                                      final int before, final int count) {
                 (FavoritesPg.this).arrayAdapter.getFilter().filter(s);
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(final Editable s) {
 
             }
         });
@@ -110,20 +113,26 @@ public class FavoritesPg extends AppCompatActivity {
                 clickedName = item;
                 //sends information to the pop activity class
                 Intent intent = new Intent(FavoritesPg.this, Pop.class);
-                intent.putExtra("detail", clickedName.replace(" ", "")+ "_recipe");
+                intent.putExtra("detail", clickedName.replace(
+                        " ", "") + "_recipe");
 
                 //starts the activity
                 startActivity(intent);
             }
         });
 
-        //removing item from favorites on the screen when user holds a long click
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        //removing item from favorites on the screen
+        // when user holds a long click
+        listView.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(final AdapterView<?> parent,
+                                           final View view, final int position,
+                                           final long id) {
                 favRecipes.remove(position);
                 arrayAdapter.notifyDataSetChanged();
-                Toast.makeText(getBaseContext(), "Favorite Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Favorite Deleted",
+                        Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -140,7 +149,8 @@ public class FavoritesPg extends AppCompatActivity {
             public void onClick(final View view) {
 
                 try {
-                    FileOutputStream fileOutputStream = openFileOutput("favorites.txt", MODE_PRIVATE);
+                    FileOutputStream fileOutputStream = openFileOutput(
+                            "favorites.txt", MODE_PRIVATE);
                     PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
                     for (String s : favRecipes) {

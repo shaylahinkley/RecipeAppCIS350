@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  * A class that tracks various user related values and computes what recipes
- * are compatible with what is in the user's fridge
+ * are compatible with what is in the user's fridge.
  *
  * @author Christian Van Eerden
  */
@@ -122,7 +122,7 @@ public class Inventory {
     private ArrayList<String> allNames(
             final ArrayList<Ingredients> allIngredients) {
         ArrayList<String> ingredientNames = new ArrayList<>();
-        for (int i = 0; i < allIngredients.size() -1 ; i++) {
+        for (int i = 0; i < allIngredients.size() - 1; i++) {
             ingredientNames.add(allIngredients.get(i).getName());
         }
         return ingredientNames;
@@ -135,7 +135,7 @@ public class Inventory {
      */
     private int getLargest(final ArrayList<Integer> howSimilar) {
         int recipeSimilarity = 0;
-        for (int i = 0; i < howSimilar.size() -1; i++) {
+        for (int i = 0; i < howSimilar.size() - 1; i++) {
             if (howSimilar.get(i) > recipeSimilarity) {
                 recipeSimilarity = howSimilar.get(i);
             }
@@ -145,7 +145,7 @@ public class Inventory {
 
     /** Method that opens adds recipes to the cookbook
      * from a file.
-     * @param file
+     * @param file file that holds the cookbook info
      */
     public void addToCookbook(final InputStream file) {
         Recipe rec = new Recipe(file);
@@ -164,16 +164,16 @@ public class Inventory {
 
         String fridgeIng;
 
-            for(Recipe r :temp){
+            for (Recipe r :temp) {
                 similarity = 0;
-                for (String tempIng : r.getIngredients()){
+                for (String tempIng : r.getIngredients()) {
                     tempIng = tempIng.toUpperCase();
-                    tempIng = tempIng.replace(" ","");
-                    for(Ingredients i : myFridge){
+                    tempIng = tempIng.replace(" ", "");
+                    for (Ingredients i : myFridge) {
                         fridgeIng = i.getName();
                         fridgeIng = fridgeIng.toUpperCase();
-                        fridgeIng = fridgeIng.replace(" ","");
-                        if(tempIng.equals(fridgeIng)){
+                        fridgeIng = fridgeIng.replace(" ", "");
+                        if (tempIng.equals(fridgeIng)) {
                         similarity++;
                         }
                     }

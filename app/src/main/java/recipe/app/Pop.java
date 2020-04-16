@@ -20,16 +20,16 @@ import java.io.InputStream;
 public class Pop extends Activity {
 
     /**Instance variable that allows the
-     * cookbook recipe to add things to the pop view */
+     * cookbook recipe to add things to the pop view. */
    private Cookbook recipe;
 
    /**Instance variable that pulls the
-    * clicked recipe name to enable information to be pushed to pop view */
+    * clicked recipe name to enable information to be pushed to pop view. */
    private SearchPage search;
 
     /**Method that builds and creates the pop
-     * up window page
-     * @param saveInstanceState
+     * up window page.
+     * @param saveInstanceState current state
      */
     @Override
     protected void onCreate(final Bundle saveInstanceState) {
@@ -45,7 +45,8 @@ public class Pop extends Activity {
 
         getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
-        //gets the string name of the recipe clicked and displays it in the text view
+        //gets the string name of the recipe
+        // clicked and displays it in the text view
         Bundle bundle = getIntent().getExtras();
         String clickedName = bundle.getString("detail");
         TextView textView = (TextView) findViewById(R.id.searchPopTextView);
@@ -53,7 +54,8 @@ public class Pop extends Activity {
         //allows the textview to scroll if text is longer than size of text view
         textView.setMovementMethod(new ScrollingMovementMethod());
 
-        //takes the list view clicked name and moves all white space to find the file name
+        //takes the list view clicked name and moves
+        // all white space to find the file name
         String strippedName = clickedName.replaceAll("\\s+", "");
         strippedName = strippedName + "_recipe";
         String text = "";
@@ -61,9 +63,9 @@ public class Pop extends Activity {
         //adds the text from the file onto the pop up text view
         try {
             InputStream is = getAssets().open(clickedName);
-            Recipe recipe = new Recipe(is);
-            System.out.println(recipe.toString());
-            text = new String(recipe.toString());
+            Recipe newRecipe = new Recipe(is);
+            System.out.println(newRecipe.toString());
+            text = new String(newRecipe.toString());
 
         } catch (IOException ex) {
             ex.printStackTrace();

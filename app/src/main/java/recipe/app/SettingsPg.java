@@ -3,8 +3,9 @@ package recipe.app;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -23,15 +24,15 @@ import java.util.Scanner;
  */
 public class SettingsPg extends AppCompatActivity {
 
-    /**Private button that saves settings*/
+    /**Private button that saves settings.*/
     private Button saveSettingsBtn;
 
-    /**int representing the theme enum code*/
+    /**int representing the theme enum code.*/
     private int themeNum;
 
     /**
      * Method that creates and builds the Settings Page.
-     * @param savedInstanceState - ADD STUFF HERE
+     * @param savedInstanceState current state that is saved
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -60,7 +61,8 @@ public class SettingsPg extends AppCompatActivity {
      * to switch back to the home page when the button is clicked.
      */
     public void configureSettingsBackHomeBtn() {
-        Button settingsBackHomeBtn = (Button) findViewById(R.id.settingsBackHomeBtn);
+        Button settingsBackHomeBtn = (
+                Button) findViewById(R.id.settingsBackHomeBtn);
         settingsBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -79,12 +81,13 @@ public class SettingsPg extends AppCompatActivity {
            public void onClick(final View v) {
                System.out.println("click");
                try {
-                   FileOutputStream fileOutputStream = openFileOutput("theme.txt", MODE_PRIVATE);
+                   FileOutputStream fileOutputStream = openFileOutput(
+                           "theme.txt", MODE_PRIVATE);
                    PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
-                   if(themeNum == android.R.style.Theme_Black_NoTitleBar){
+                   if (themeNum == android.R.style.Theme_Black_NoTitleBar) {
                        themeNum = android.R.style.Theme_Light_NoTitleBar;
-                   }else{
+                   } else {
                        themeNum = android.R.style.Theme_Black_NoTitleBar;
                    }
                    printWriter.println(themeNum);

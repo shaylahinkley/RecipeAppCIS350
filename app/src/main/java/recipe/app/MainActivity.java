@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                startActivityForResult(new Intent(MainActivity.this, SettingsPg.class), 1);
+                startActivityForResult(new Intent(
+                        MainActivity.this, SettingsPg.class), 1);
                 recreate();
             }
         });
@@ -109,12 +110,13 @@ public class MainActivity extends AppCompatActivity {
      * that sent you back to the home(main) screen is
      * settings, then it recreates the activity
      * according to the theme.
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     * @param requestCode current theme
+     * @param resultCode what the theme should be
+     * @param data data to prove it
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(final int requestCode,
+                                    final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             this.recreate();

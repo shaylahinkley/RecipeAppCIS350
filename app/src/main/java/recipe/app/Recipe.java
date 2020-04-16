@@ -47,7 +47,7 @@ public class Recipe {
     private ArrayList ingredients;
 
     /**
-     * Method that gets the location of the file
+     * Method that gets the location of the file.
      * @return fileLoc - the location of the file
      */
     public String getFileLoc() {
@@ -55,7 +55,7 @@ public class Recipe {
     }
 
     /**
-     * Method that sets the file location
+     * Method that sets the file location.
      * @param newFileLoc
      */
     public void setFileLoc(final String newFileLoc) {
@@ -110,7 +110,7 @@ public class Recipe {
         for (int i = 0; i < ingredientCount; ++i) {
             str = str + this.quantities.get(i) + this.ingredients.get(i) + "\n";
         }
-        str +="\n";
+        str += "\n";
         for (int i = 0; i < stepCount; ++i) {
             str = str + this.instructions.get(i) + "\n";
         }

@@ -27,28 +27,29 @@ import java.util.Scanner;
  */
 public class SearchPage extends AppCompatActivity {
 
-    /** Instance variable for the arraylist of recipe names */
+    /** Instance variable for the arraylist of recipe names. */
     private ArrayList<String> recipeNames;
 
     /** Instance variable for the
-     * array adapter that is being used in list view */
+     * array adapter that is being used in list view. */
     private ArrayAdapter arrayAdapter;
 
     /** Instance variable that allows the
-     * Cookbook class to link to front end for use */
+     * Cookbook class to link to front end for use. */
     private Cookbook recipe;
 
     /**Instance variable that stores the name of
-     * the recipe name that is clicked to be used for pop up */
+     * the recipe name that is clicked to be used for pop up. */
     private String clickedName;
 
-    /**Instance variable to pull and create an inventory */
-    Inventory myInventory;
+    /**Instance variable to pull and create an inventory. */
+    private Inventory myInventory;
 
-    /** Arraylit of the recipes */
-    ArrayList<Recipe> recipes;
+    /** Arraylist of the recipes. */
+    private ArrayList<Recipe> recipes;
 
-    public static ArrayList<String> favoriteRecipes;
+    /** Arraylist of favorite recipes. */
+    private ArrayList<String> favoriteRecipes;
 
 
     /**
@@ -88,7 +89,7 @@ public class SearchPage extends AppCompatActivity {
         }
 
         recipes = myInventory.getMyCookbook().getRecipes();
-        for(Recipe r : recipes){
+        for (Recipe r : recipes) {
             recipeNames.add(r.getName());
         }
 
@@ -144,20 +145,27 @@ public class SearchPage extends AppCompatActivity {
                 clickedName = item;
                 //sends information to the pop activity class
                 Intent intent = new Intent(SearchPage.this, Pop.class);
-                intent.putExtra("detail", clickedName.replace(" ", "")+ "_recipe");
+                intent.putExtra("detail", clickedName.replace(
+                        " ", "") + "_recipe");
 
                 //starts the activity
                 startActivity(intent);
             }
         });
 
-        //removing item from arraylist on the screen when user holds a long click
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        //removing item from arraylist on the
+        // screen when user holds a long click
+        listView.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                String nameOfRecipe = (String) parent.getItemAtPosition(position);
+            public boolean onItemLongClick(final AdapterView<?> parent,
+                                           final View view, final int position,
+                                           final long id) {
+                String nameOfRecipe = (
+                        String) parent.getItemAtPosition(position);
                 favoriteRecipes.add(nameOfRecipe);
-                Toast.makeText(getBaseContext(), "Added to Favorites", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(),
+                        "Added to Favorites", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -178,11 +186,12 @@ public class SearchPage extends AppCompatActivity {
             public void onClick(final View view) {
 
                 try {
-                    FileOutputStream fileOutputStream = openFileOutput("favorites.txt", MODE_PRIVATE);
+                    FileOutputStream fileOutputStream = openFileOutput(
+                            "favorites.txt", MODE_PRIVATE);
                     PrintWriter printWriter = new PrintWriter(fileOutputStream);
 
                     for (String s : favoriteRecipes) {
-                        if(!favorites.contains(s)) {
+                        if (!favorites.contains(s)) {
                             printWriter.println(s);
                             System.out.println(s);
                             favorites.add(s);
