@@ -174,7 +174,6 @@ public class Cookbook {
         return str;
     }
 
-
     /**
      * Saves a cookbook to a file with the name of the cookbook,
      * it holds file locations of recipes.
@@ -193,28 +192,5 @@ public class Cookbook {
         } catch (Exception e) {
             System.out.println("Error File path not found");
         }
-
     }
-
-    /**
-     * Loads a cookbook from file into a cookbook.
-     *
-     * @param file name of cookbook to be loaded
-     */
-    /*public void loadBook(String file) {
-        try {
-            FileInputStream fileStream = new FileInputStream(file + ".txt");
-            Scanner scr = new Scanner(fileStream);
-            scr.useDelimiter("\n");
-            numRecipes = 0;
-            name = scr.nextLine();
-            while (scr.hasNext()) {
-                recipes.add(new Recipe(scr.nextLine()));
-                numRecipes++;
-            }
-        } catch (Exception e) {
-            System.out.println("Exception");
-        }
-
-    }*/
 }

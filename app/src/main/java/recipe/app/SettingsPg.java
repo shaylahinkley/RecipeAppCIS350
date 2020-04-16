@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -24,9 +22,6 @@ import java.util.Scanner;
  * @author Shayla Hinkley
  */
 public class SettingsPg extends AppCompatActivity {
-
-    /** instance variable that stores the name of the user. */
-    private String name;
 
     /**Private button that saves settings*/
     private Button saveSettingsBtn;
@@ -58,25 +53,6 @@ public class SettingsPg extends AppCompatActivity {
         configureSettingsBackHomeBtn();
         configureSaveBtn();
 
-        final EditText nameText = (EditText) findViewById(R.id.editTextName);
-
-        nameText.setText(this.name);
-    }
-
-    /**
-     * Method that sets the name of the user.
-     * @param newName String of the user's name
-     */
-    public void setName(final String newName) {
-        this.name = newName;
-    }
-
-    /**
-     * Method that gets the name of the user.
-     * @return String name
-     */
-    public String getName() {
-        return this.name;
     }
 
     /**
@@ -94,7 +70,7 @@ public class SettingsPg extends AppCompatActivity {
     }
 
     /**
-     * Configures the save name button.
+     * Configures the change mode button.
      */
     public void configureSaveBtn() {
 

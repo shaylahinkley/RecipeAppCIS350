@@ -1,19 +1,11 @@
 package recipe.app;
 
-
-//import com.example.recipeapp.Cookbook;
-//import com.example.recipeapp.Ingredients;
-//import com.example.recipeapp.Recipe;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-//import static recipe.app.main.fill
-
 
 /**
  * A class that tracks various user related values and computes what recipes
@@ -151,7 +143,10 @@ public class Inventory {
         return howSimilar.indexOf(recipeSimilarity);
     }
 
-    //ADD COMMENT
+    /** Method that opens adds recipes to the cookbook
+     * from a file.
+     * @param file
+     */
     public void addToCookbook(final InputStream file) {
         Recipe rec = new Recipe(file);
         myCookbook.addRecipes(rec);
@@ -181,12 +176,13 @@ public class Inventory {
                         if(tempIng.equals(fridgeIng)){
                         similarity++;
                         }
+                    }
                 }
-            }
             similarities.add(similarity);
-        }
+            }
         return temp.get(getLargest(similarities));
     }
+
     /***
      * Saves the current list of ingredients
      * from the fridge Arraylist to a txt file.
@@ -205,6 +201,7 @@ public class Inventory {
             System.out.printf("Error: %s\n", ex);
         }
     }
+
     /**
      * Loads in the previously saved list of ingredients
      * from a file and adds them to the fridge Arraylist.
@@ -214,7 +211,6 @@ public class Inventory {
         try {
             FileInputStream fileStream = new FileInputStream(file + ".txt");
             Scanner scnr = new Scanner(fileStream);
-
             while (scnr.hasNext()) {
                 String tempQ = scnr.nextLine();
                 String tempN = scnr.nextLine();

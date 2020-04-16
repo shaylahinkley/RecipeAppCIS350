@@ -44,6 +44,7 @@ public class FavoritesPg extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //opens the theme file
         try {
             InputStream fav = openFileInput("theme.txt");
             Scanner scr = new Scanner(fav);
@@ -53,11 +54,12 @@ public class FavoritesPg extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //configures the state of the favorites page
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites_pg);
         configureFavBacktoHomeButton();
 
-
+        //loads favorites from the file
         favRecipes = new ArrayList<String>();
         try {
             InputStream fav = openFileInput("favorites.txt");
@@ -71,9 +73,9 @@ public class FavoritesPg extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //creates the array adapter to fill the list view
         arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, favRecipes);
-
         ListView listView = (ListView) findViewById(R.id.favListView);
         listView.setAdapter(arrayAdapter);
 
@@ -125,7 +127,6 @@ public class FavoritesPg extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     /**
@@ -134,10 +135,6 @@ public class FavoritesPg extends AppCompatActivity {
      */
     public void configureFavBacktoHomeButton() {
         Button favBackHomeBtn = (Button) findViewById(R.id.favBackHomeBtn);
-
-
-
-
         favBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {

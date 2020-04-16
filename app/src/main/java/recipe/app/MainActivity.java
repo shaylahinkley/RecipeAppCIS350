@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -18,17 +17,17 @@ import java.util.Scanner;
  * @author Shayla Hinkley
  */
 public class MainActivity extends AppCompatActivity {
-//
-//    private String name = "John/Jane Doe Doe";
-//    private int age;
 
     /**
      * Method that builds the main page.
+     *
      * @param savedInstanceState - reference to
      *                           Bundle Objecct that allows restore
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
+        //method that loads the theme from a file
         try {
             InputStream fav = openFileInput("theme.txt");
             Scanner scr = new Scanner(fav);
@@ -38,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        //loads the page and creates it
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //configures the buttons on the page
         configureFavoritesBtn();
         configureStockBtn();
         configureRecentsBtn();
@@ -99,12 +99,20 @@ public class MainActivity extends AppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                startActivityForResult(new Intent(MainActivity.this, SettingsPg.class),1);
+                startActivityForResult(new Intent(MainActivity.this, SettingsPg.class), 1);
                 recreate();
             }
         });
     }
 
+    /** Method that checks if the activity
+     * that sent you back to the home(main) screen is
+     * settings, then it recreates the activity
+     * according to the theme.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -112,6 +120,4 @@ public class MainActivity extends AppCompatActivity {
             this.recreate();
         }
     }
-
-
 }

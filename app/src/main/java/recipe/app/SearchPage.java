@@ -88,18 +88,15 @@ public class SearchPage extends AppCompatActivity {
         }
 
         recipes = myInventory.getMyCookbook().getRecipes();
-
         for(Recipe r : recipes){
             recipeNames.add(r.getName());
         }
-
 
         try {
             InputStream fav = openFileInput("favorites.txt");
             Scanner scr = new Scanner(fav);
             while (scr.hasNextLine()) {
                 favoriteRecipes.add(scr.nextLine());
-                // System.out.println(items);
             }
 
             fav.close();
@@ -164,8 +161,6 @@ public class SearchPage extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     /**
@@ -181,7 +176,6 @@ public class SearchPage extends AppCompatActivity {
         recentsBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-
 
                 try {
                     FileOutputStream fileOutputStream = openFileOutput("favorites.txt", MODE_PRIVATE);

@@ -9,9 +9,7 @@ import java.util.Scanner;
  *
  * @author Kameron Nelski
  */
-
 public class Recipe {
-
 
     /**
      * File location.
@@ -48,16 +46,21 @@ public class Recipe {
      */
     private ArrayList ingredients;
 
-    //ADD COMMENT
+    /**
+     * Method that gets the location of the file
+     * @return fileLoc - the location of the file
+     */
     public String getFileLoc() {
         return fileLoc;
     }
 
-    //ADD COMMENT
+    /**
+     * Method that sets the file location
+     * @param newFileLoc
+     */
     public void setFileLoc(final String newFileLoc) {
         this.fileLoc = newFileLoc;
     }
-
 
     /**
      * Constructor for a recipeFile.
@@ -69,7 +72,6 @@ public class Recipe {
         instructions = new ArrayList<String>();
         quantities = new ArrayList<String>();
         ingredients = new ArrayList<String>();
-
 
         try {
             Scanner scr = new Scanner(recipeFile);
