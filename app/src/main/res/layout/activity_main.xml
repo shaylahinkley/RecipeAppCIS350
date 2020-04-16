@@ -6,34 +6,71 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+
     <Button
-            android:text="@string/favorites"
-            android:layout_width="199dp"
-            android:layout_height="298dp"
-            android:id="@+id/favoritesBtn"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="2dp" android:layout_marginStart="2dp"/>
+        android:id="@+id/favoritesBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/favorites"
+        app:layout_constraintBottom_toTopOf="@+id/recentsBtn"
+        app:layout_constraintEnd_toStartOf="@+id/stockBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <androidx.constraintlayout.widget.Barrier android:layout_width="wrap_content" android:layout_height="wrap_content"
                                               android:id="@+id/barrier" app:barrierDirection="top"
                                               tools:layout_editor_absoluteY="602dp"/>
+
     <Button
-            android:text="@string/stock"
-            android:layout_width="206dp"
-            android:layout_height="296dp" tools:layout_editor_absoluteY="1dp"
-            android:id="@+id/stockBtn" app:layout_constraintEnd_toEndOf="parent"
-    />
+        android:id="@+id/stockBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/stock"
+        app:layout_constraintBottom_toTopOf="@+id/settingsBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/favoritesBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
-            android:text="@string/search"
-            android:layout_width="193dp"
-            android:layout_height="304dp"
-            android:id="@+id/recentsBtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="3dp"
-            android:layout_marginStart="3dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="1dp"/>
+        android:id="@+id/recentsBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settingsBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favoritesBtn" />
+
     <Button
-            android:text="@string/settings"
-            android:layout_width="207dp"
-            android:layout_height="299dp"
-            android:id="@+id/settingsBtn"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="4dp"/>
+        android:id="@+id/settingsBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recentsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/stockBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

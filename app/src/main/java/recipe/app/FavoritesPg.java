@@ -43,11 +43,21 @@ public class FavoritesPg extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        try {
+            InputStream fav = openFileInput("theme.txt");
+            Scanner scr = new Scanner(fav);
+            setTheme(scr.nextInt());
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites_pg);
         configureFavBacktoHomeButton();
 
-//        favRecipes = (ArrayList<String>) getIntent().getSerializableExtra("favoriteslist");
+
         favRecipes = new ArrayList<String>();
         try {
             InputStream fav = openFileInput("favorites.txt");

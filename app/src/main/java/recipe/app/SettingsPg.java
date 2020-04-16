@@ -7,6 +7,11 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 
 /**
  * A class that builds the Settings screen of the Android App.
@@ -23,44 +28,39 @@ public class SettingsPg extends AppCompatActivity {
     /** instance variable that stores the name of the user. */
     private String name;
 
+    /**Private button that saves settings*/
+    private Button saveSettingsBtn;
+
+    /**int representing the theme enum code*/
+    private int themeNum;
+
     /**
      * Method that creates and builds the Settings Page.
      * @param savedInstanceState - ADD STUFF HERE
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        try {
+            InputStream fav = openFileInput("theme.txt");
+            Scanner scr = new Scanner(fav);
+            themeNum = scr.nextInt();
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        setTheme(themeNum);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_pg);
 
+        saveSettingsBtn = (Button) findViewById(R.id.saveSettingsBtn);
+
         configureSettingsBackHomeBtn();
+        configureSaveBtn();
 
-//        final HelperVariables helper = new HelperVariables();
-        Button saveSettingsBtn = (Button) findViewById(R.id.saveSettingsBtn);
         final EditText nameText = (EditText) findViewById(R.id.editTextName);
-//        nameText.setText(helper.getName());
-        nameText.setText(this.name);
-        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-//                helper.setName(nameText.getText().toString());
-                    name = nameText.getText().toString();
-                    nameText.setText(nameText.getText().toString());
-////                nameText.setText(nameText.getText().toString());
-//                nameText.setText(helper.getName());
-            }
-        });
-//        editTextName = (EditText) findViewById(R.id.editTextName);
-//        Button saveSettingsBtn = (Button) findViewById(R.id.settingsBtn);
-//        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                mainActivity.setName(editTextName.getText().toString());
-////                editTextName.setText(mainActivity.getName());
-//                editTextName.setText(editTextName.getText().toString());
-//
-//            }
-//        });
 
+        nameText.setText(this.name);
     }
 
     /**
@@ -97,14 +97,34 @@ public class SettingsPg extends AppCompatActivity {
      * Configures the save name button.
      */
     public void configureSaveBtn() {
-       Button saveSettingsBtn = (Button) findViewById(R.id.settingsBtn);
+
        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(final View v) {
-//               mainActivity.setName(editTextName.getText().toString());
-//               editTextName.setText(mainActivity.getName());
+               System.out.println("click");
+               try {
+                   FileOutputStream fileOutputStream = openFileOutput("theme.txt", MODE_PRIVATE);
+                   PrintWriter printWriter = new PrintWriter(fileOutputStream);
+
+                   if(themeNum == android.R.style.Theme_Black_NoTitleBar){
+                       themeNum = android.R.style.Theme_Light_NoTitleBar;
+                   }else{
+                       themeNum = android.R.style.Theme_Black_NoTitleBar;
+                   }
+                   printWriter.println(themeNum);
+
+                   printWriter.flush();
+                   printWriter.close();
+                   fileOutputStream.close();
+
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+               finish();
            }
        });
     }
+
+
 }
 

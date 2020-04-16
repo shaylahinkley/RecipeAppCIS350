@@ -70,6 +70,14 @@ public class StockPg extends AppCompatActivity {
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        try {
+            InputStream fav = openFileInput("theme.txt");
+            Scanner scr = new Scanner(fav);
+            setTheme(scr.nextInt());
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_pg);
 

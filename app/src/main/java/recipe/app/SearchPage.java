@@ -58,6 +58,15 @@ public class SearchPage extends AppCompatActivity {
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        try {
+            InputStream fav = openFileInput("theme.txt");
+            Scanner scr = new Scanner(fav);
+            setTheme(scr.nextInt());
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent_pg);
         configureRecentsBacktoHomeButton();
@@ -172,6 +181,7 @@ public class SearchPage extends AppCompatActivity {
         recentsBackHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+
 
                 try {
                     FileOutputStream fileOutputStream = openFileOutput("favorites.txt", MODE_PRIVATE);

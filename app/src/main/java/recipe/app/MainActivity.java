@@ -6,6 +6,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.InputStream;
+import java.util.Scanner;
+
 /**
  * A class that builds the main screen of the Android App.
  * It initializes all the buttons and allows the user
@@ -26,6 +29,16 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        try {
+            InputStream fav = openFileInput("theme.txt");
+            Scanner scr = new Scanner(fav);
+            setTheme(scr.nextInt());
+            fav.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -86,8 +99,19 @@ public class MainActivity extends AppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                startActivity(new Intent(MainActivity.this, SettingsPg.class));
+                startActivityForResult(new Intent(MainActivity.this, SettingsPg.class),1);
+                recreate();
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            this.recreate();
+        }
+    }
+
+
 }
