@@ -37,7 +37,7 @@ public class Inventory {
     public Inventory() {
         myCookbook = new Cookbook("Master Cookbook");
         fridge = new ArrayList<>();
-        setNumIngredients(0);
+        numIngredients = 0;
     }
 
     /** Get method for the cookbook object.
@@ -112,20 +112,6 @@ public class Inventory {
         Ingredients ingredient = new Ingredients(quantity, name);
         fridge.remove(ingredient);
         numIngredients--;
-    }
-
-    /** Private helper method that returns all names of ingredients
-     * in the current inventory.
-     * @param allIngredients - all the ingredient objects in the fridge
-     * @return ArrayList<String> all the names of every ingredient in the fridge
-     */
-    private ArrayList<String> allNames(
-            final ArrayList<Ingredients> allIngredients) {
-        ArrayList<String> ingredientNames = new ArrayList<>();
-        for (int i = 0; i < allIngredients.size() - 1; i++) {
-            ingredientNames.add(allIngredients.get(i).getName());
-        }
-        return ingredientNames;
     }
 
     /** Private helper method that locates the index with the largest

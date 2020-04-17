@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,9 +32,6 @@ import java.util.Scanner;
  */
 public class StockPg extends AppCompatActivity {
 
-    /** Instance variable of the Ingredients class. */
-    private Ingredients ingredient;
-
     /** Instance variable of the Inventory class. */
     private Inventory myInventory;
 
@@ -43,32 +39,16 @@ public class StockPg extends AppCompatActivity {
      * ingredients in the TextView for the User to see. */
     private ArrayList<String> myArrayList;
 
-    /** The quantity of the ingredient that is added to the stock. */
-    private String quantity;
-
-    /**The name of ingredient that is added to the stock. */
-    private String nameOfIngredient;
-
-    /** The TextView that allows the stock to be
-     * outputted to the screen once the user adds ingredients. */
-    private TextView textView;
-
     /**
      * Button that searches for recipes based on stock.
      */
     private Button searchButton;
 
     /**
-     * Arraylist of ingredient names.
-     */
-    private  ArrayList<String> ingredientName;
-
-
-    /**
      * Method that builds and creates the Stock Page. It also adds ingredients
      * to the ArrayList to be outputted to the screen once the user clicks the
      * add to stock button.
-     * @param savedInstanceState ADD COMMENTS
+     * @param savedInstanceState Current state
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {

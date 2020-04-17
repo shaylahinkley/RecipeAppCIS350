@@ -34,8 +34,8 @@ public class Ingredients {
      * @param newName     - Name of a certain ingredient
      */
     public Ingredients(final String newQuantity, final String newName) {
-        setName(newName);
-        setQuantity(newQuantity);
+        name = newName;
+        quantity = newQuantity;
     }
 
     /**
